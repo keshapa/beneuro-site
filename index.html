@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beneuro — AI-отдел продаж, который сам находит клиентов и пишет им первым</title>
+<meta name="description" content="Читаем чаты, каналы и вакансии. Находим тех, кому прямо сейчас нужно то, что вы делаете, и готовим персональное первое сообщение каждому. Для агентств маркетплейсов, фулфилментов, дизайн-студий, карго и бухгалтеров.">
+<!-- Основной адрес сайта — без www. Оба работают (www подключён к тому же проекту Pages),
+     поэтому поисковику нужно прямо сказать, какой считать главным, иначе он увидит два
+     одинаковых сайта и разделит между ними вес. -->
+<link rel="canonical" href="https://beneuro.ai/">
+<link rel="icon" href="beneuro-favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="beneuro-icon-180.png">
+<meta property="og:title" content="Beneuro — AI-отдел продаж, который пишет первым">
+<meta property="og:description" content="Находим тех, кому прямо сейчас нужно то, что вы делаете, и готовим персональное сообщение каждому.">
+<!-- og:image обязан быть абсолютной ссылкой: относительную Telegram и соцсети не разворачивают,
+     и превью выходило без картинки. og:url — тот же канонический адрес без www. -->
+<meta property="og:image" content="https://beneuro.ai/beneuro-avatar-word-2048.png">
+<meta property="og:url" content="https://beneuro.ai/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<!-- Машиночитаемое описание для поисковиков и AI-ассистентов (schema.org, JSON-LD):
+     кто мы, что за услуга, тарифы и FAQ. FAQ здесь обязан слово в слово повторять
+     видимый блок #faq ниже — разметка, расходящаяся со страницей, карается поисковиками.
+     Правишь вопрос в секции — правь и здесь. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://beneuro.ai/#org",
+      "name": "Beneuro",
+      "url": "https://beneuro.ai/",
+      "logo": "https://beneuro.ai/beneuro-avatar-word-2048.png",
+      "description": "AI-отдел продаж: находит компании, которым услуга нужна прямо сейчас, и готовит персональное первое сообщение каждому лиду.",
+      "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "url": "https://t.me/beneuro_bot", "availableLanguage": "ru" },
+      "sameAs": ["https://t.me/beneuro_bot"]
+    },
+    {
+      "@type": "Service",
+      "name": "AI-лидогенерация Beneuro",
+      "serviceType": "Лидогенерация с помощью AI-агента",
+      "provider": { "@id": "https://beneuro.ai/#org" },
+      "areaServed": "RU",
+      "audience": { "@type": "BusinessAudience", "name": "Компании, продающие услуги селлерам маркетплейсов: агентства, фулфилменты, дизайн-студии, карго, бухгалтеры" },
+      "description": "Агент читает чаты, каналы и вакансии, находит людей с живым спросом, проверяет компанию и кладёт в панель карточку лида с контактом и готовым персональным сообщением.",
+      "offers": [
+        { "@type": "Offer", "name": "Старт — 500 лидов в месяц", "price": "10000", "priceCurrency": "RUB" },
+        { "@type": "Offer", "name": "Поток — 1250 лидов в месяц", "price": "20000", "priceCurrency": "RUB" },
+        { "@type": "Offer", "name": "Агент-аналитик — глубокий анализ каждого лида", "price": "10000", "priceCurrency": "RUB" },
+        { "@type": "Offer", "name": "Новая ниша — разбор ниши с нуля, месяц бесплатно", "price": "50000", "priceCurrency": "RUB" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое Beneuro?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AI-отдел продаж для компаний, которые продают услуги селлерам маркетплейсов. Агент читает чаты, каналы и вакансии, находит тех, кому услуга нужна прямо сейчас, и готовит персональное первое сообщение каждому. Вы получаете готовые карточки лидов в панели." }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько это стоит?",
+          "acceptedAnswer": { "@type": "Answer", "text": "«Старт» — 10 000 ₽ в месяц за 500 лидов, «Поток» — 20 000 ₽ за 1250 лидов. Глубокий анализ каждого лида («Агент-аналитик») — плюс 10 000 ₽ в месяц. Если вашей ниши у нас ещё нет, разбираем её с нуля за 50 000 ₽ разово — и месяц работы бесплатно." }
+        },
+        {
+          "@type": "Question",
+          "name": "Что вы считаете лидом?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Найденную и проверенную карточку: кто это, почему подходит именно вам, контакт и готовый текст первого сообщения. Не «сообщение из чата» и не факт отправки — отправка включается отдельно, когда вам понравится качество текстов." }
+        },
+        {
+          "@type": "Question",
+          "name": "Какая конверсия в ответы?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Холодные рассылки дают 0,4–3,4% ответов. Наши конверсии — в диапазоне 8–35% в зависимости от ниши и канала: сообщение опирается на то, что человек написал сам. На живом клиенте за неделю ответили 26% получателей, по лидам из чатов — 38%." }
+        },
+        {
+          "@type": "Question",
+          "name": "Чем это отличается от парсера чатов?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Парсер ищет по ключевым словам и присылает всех подряд — включая ботов и таких же подрядчиков, как вы. Наш агент читает каждое сообщение целиком и понимает, кто его написал и зачем, поэтому в панель попадают только реальные лиды." }
+        },
+        {
+          "@type": "Question",
+          "name": "Вы отправляете сообщения сами? Это безопасно для аккаунта?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Отправка идёт с вашего аккаунта Telegram и включается только когда вы посмотрели тексты в панели и готовы. Шлём небольшими порциями в пределах дневного лимита и только в рабочие часы — чтобы аккаунт не попадал под ограничения мессенджера. До включения отправки все тексты просто лежат в панели." }
+        },
+        {
+          "@type": "Question",
+          "name": "Кому подходит Beneuro?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Всем, кто продаёт услугу или продукт с чеком от 10 000 ₽ и хочет больше входящих диалогов: при таком чеке система окупается с первой же продажи. Сильнее всего мы сейчас в нишах вокруг маркетплейсов — агентства по Wildberries и Ozon, фулфилменты, фото- и дизайн-студии, карго, бухгалтеры. Если вашей ниши у нас ещё нет — разберём её с нуля по тарифу «Новая ниша»." }
+        },
+        {
+          "@type": "Question",
+          "name": "Нужно ли что-то устанавливать?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Нет. Панель открывается по ссылке с телефона или компьютера, без установки и регистрации. Когда лид отвечает, уведомление приходит вам в Telegram." }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли посмотреть, как это работает, до оплаты?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Да — откройте демо-панель на demo.beneuro.ai. Это живая панель с выдуманными лидами: карточки, готовые тексты, аналитика по каналам. Без регистрации." }
+        },
+        {
+          "@type": "Question",
+          "name": "Как быстро можно запуститься?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Настройка — около 20 минут: бот задаёт двенадцать вопросов о том, кто вы, кого берёте в клиенты и как разговариваете. Дальше поиск и первые лиды — на нас." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+/* ШРИФТЫ ЛЕЖАТ У НАС, А НЕ У GOOGLE.
+   Макет подключал Onest и JetBrains Mono ссылкой на fonts.googleapis.com. Для нашей аудитории
+   это лишний внешний запрос к сервису, который в России то открывается, то нет, — а без шрифта
+   вся типографика макета рассыпается. Файлы скачаны один раз и лежат в fonts/. */
+@font-face{font-family:Onest;font-weight:300 700;font-display:swap;
+  src:url(fonts/onest-cyrillic.woff2) format('woff2');
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:300 700;font-display:swap;
+  src:url(fonts/onest-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"JetBrains Mono";font-weight:400 500;font-display:swap;
+  src:url(fonts/jetbrainsmono-cyrillic.woff2) format('woff2');
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"JetBrains Mono";font-weight:400 500;font-display:swap;
+  src:url(fonts/jetbrainsmono-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --ink:#10131a;            /* фон тёмных секций, текст на светлых */
+  --paper:#f1f4f3;          /* фон светлых секций */
+  --tod:#f2f5f4;            /* текст на тёмном */
+  --green:#30be86;          /* акцент из логотипа */
+  --green-hover:#3ed699;
+  --green-dark:#167a55;     /* тот же акцент на светлом фоне — по контрасту */
+  --card:#ffffff;           /* карточка на светлой секции */
+  --muted-paper:#e4e8e6;    /* «зачёркнутый» блок обычной рассылки */
+  --tint-paper:#e5efe9;     /* подсвеченная строка Beneuro на светлом */
+  --tint-dark:#13211d;      /* она же на тёмном — карточка тарифа «Поток» */
+  --line-dark:rgba(242,245,244,.11);
+  --line-light:rgba(16,19,26,.1);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--tod);
+  font-family:Onest,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:clip}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+h1,h2,h3{margin:0}
+p{margin:0}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .dot,.tg{animation:none !important}
+}
+
+/* ── каркас ──────────────────────────────────────────────────────────────
+   Правило чередования: тёмная и светлая секции всегда идут через одну.
+   Соседние секции одного тона сливались в одно полотно — при добавлении
+   новых блоков порядок тонов сохранять. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.sec{padding:104px 0}
+.dark{background:var(--ink);color:var(--tod)}
+.light{background:var(--paper);color:var(--ink)}
+.dark + .dark{border-top:1px solid var(--line-dark)}
+.light + .light{border-top:1px solid var(--line-light)}
+
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:20px}
+.dark .eyebrow{color:rgba(242,245,244,.45)}
+.light .eyebrow{color:rgba(16,19,26,.45)}
+.eyebrow.acc{color:var(--green)}
+.light .eyebrow.acc{color:var(--green-dark)}
+
+h1{font-size:clamp(44px,5.2vw,76px);line-height:.98;letter-spacing:-.035em;font-weight:500;
+  text-wrap:balance}
+h2{font-size:clamp(32px,3.6vw,50px);line-height:1.04;letter-spacing:-.03em;font-weight:500;
+  text-wrap:balance}
+h3{font-size:19px;font-weight:600;letter-spacing:-.01em}
+.lede{font-size:18px;line-height:1.6;max-width:640px;text-wrap:pretty}
+.dark .lede{color:rgba(242,245,244,.6)}
+.light .lede{color:rgba(16,19,26,.6)}
+.body{font-size:16.5px;line-height:1.6;text-wrap:pretty}
+.dark .body{color:rgba(242,245,244,.62)}
+.light .body{color:rgba(16,19,26,.62)}
+.h2-gap{margin-bottom:52px}
+
+/* ── кнопки ──────────────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-size:16px;
+  padding:16px 28px;border-radius:999px;border:1px solid transparent;white-space:nowrap;
+  transition:background-color .14s ease,border-color .14s ease,color .14s ease}
+.btn-green{background:var(--green);color:var(--ink);font-weight:600}
+.btn-green:hover{background:var(--green-hover);color:var(--ink)}
+.btn-ink{background:var(--ink);color:var(--tod);font-weight:600}
+.btn-ink:hover{background:#232935}
+.btn-line{border-color:rgba(242,245,244,.22);color:var(--tod)}
+.btn-line:hover{border-color:var(--green);color:var(--green)}
+.btn-line-ink{border-color:rgba(16,15,13,.3);color:var(--ink)}
+.btn-line-ink:hover{border-color:var(--ink)}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ── шапка ───────────────────────────────────────────────────────────── */
+header{position:sticky;top:0;z-index:50;background:rgba(16,15,13,.82);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(242,245,244,.09)}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px;min-height:68px;
+  max-width:1200px;margin:0 auto;padding:12px 32px}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none;
+  animation:blink 2.6s ease-in-out infinite}
+.logo{display:block;height:21px;color:var(--tod)}
+.logo svg{height:100%;width:auto;display:block}
+.bar nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14.5px;color:rgba(242,245,244,.62)}
+.bar nav a:hover{color:var(--green)}
+.hdr-cta{margin-left:auto;padding:11px 20px;font-size:14.5px}
+.cta-short,.nav-short{display:none}
+
+/* ── первый экран ────────────────────────────────────────────────────── */
+.hero{padding:96px 0 112px}
+.hero-grid{display:flex;flex-wrap:wrap;gap:56px 72px;align-items:flex-start}
+.hero-text{flex:1 1 420px;min-width:300px}
+.hero-side{flex:1 1 380px;min-width:300px}
+.hero h1{margin-bottom:28px}
+.hero h1 .line{display:block}
+.hero h1 mark{background:none;color:var(--green)}
+.hero-lede{font-size:19px;line-height:1.55;color:rgba(242,245,244,.66);max-width:540px;
+  margin-bottom:40px;text-wrap:pretty}
+.hero .btn-row{margin-bottom:56px}
+/* Плашка метрик — хайрлайн-сетка: зазор в 1px показывает фон-подложку. */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;
+  background:rgba(242,245,244,.12);border:1px solid rgba(242,245,244,.12);
+  border-radius:4px;overflow:hidden}
+.metrics > div{background:var(--ink);padding:20px 22px}
+.metrics .wide{grid-column:span 2}
+.metrics b{display:block;font-size:30px;font-weight:400;letter-spacing:-.03em}
+.metrics span{display:block;font-size:13px;color:rgba(242,245,244,.5);margin-top:4px}
+
+/* ── ОКНО TELEGRAM ───────────────────────────────────────────────────────
+   Интерфейс собран вёрсткой, а не наложен на снимок. Так пузыри растут под
+   содержимое: текст можно править словами, а не подгонять по координатам.
+   Шрифт здесь системный — на Маке и айфоне SF Pro, на Windows Segoe UI,
+   то есть ровно то, чем Telegram и рисует. Onest с остального сайта сюда
+   не пускаем, иначе окно перестаёт читаться как мессенджер.
+   ПУЗЫРЬ И АВАТАР — СИРЕНЕВЫЕ, И ЭТО НАРОЧНО. Сайт зелёный целиком, и когда
+   окно тоже сделали зелёным целиком, страница стала однотонной: единственная
+   картинка на первом экране переставала выделяться. Сиреневый — родной цвет
+   Telegram и самое яркое цветное пятно на странице, взгляд идёт прямо на него.
+   Полностью зелёное окно лежит в истории git (коммит 069871b). */
+.tg{position:relative;isolation:isolate;margin:0;border-radius:18px;overflow:hidden;color:#fff;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+  letter-spacing:-.01em;background:#0B0B0F;
+  border:1px solid rgba(242,245,244,.1);
+  box-shadow:0 30px 70px -30px rgba(0,0,0,.7);
+  animation:rise .6s ease both}
+/* ОБОИ — ПЕРЕХОД ИЗ ЗЕЛЁНОГО В СИРЕНЕВЫЙ, СЛЕВА НАПРАВО.
+   Два слоя ОДНОЙ И ТОЙ ЖЕ картинки tg-bg.jpg — поэтому каракули на них
+   совпадают до пикселя и переход читается как смена цвета, а не как две
+   разные картинки внахлёст:
+     ::before — картинка, перекрашенная фильтром в зелёный (цвет сайта);
+     ::after  — она же в родных сиреневых тонах, но маска проявляет её
+                только справа, плавно перекрывая зелёный слой.
+   Оба слоя лежат под содержимым (z-index -1 внутри isolation:isolate
+   у .tg), на текст и пузыри не влияют. Сам файл tg-bg.jpg не тронут.
+   Откатить: убрать ::after — останутся сплошь зелёные обои; убрать заодно
+   filter у ::before — вернутся полностью родные розово-синие. */
+.tg::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:#0B0B0F url("tg-bg.jpg") center/cover;
+  filter:grayscale(1) sepia(1) hue-rotate(96deg) saturate(2) brightness(.95)}
+.tg::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:#0B0B0F url("tg-bg.jpg") center/cover;
+  -webkit-mask-image:linear-gradient(100deg,rgba(0,0,0,0) 25%,rgba(0,0,0,1) 75%);
+  mask-image:linear-gradient(100deg,rgba(0,0,0,0) 25%,rgba(0,0,0,1) 75%)}
+
+/* Шапка: не полоса, а три плашки поверх обоев — как в мобильном Telegram.
+   Фон под шапкой и под панелью ввода затемнён градиентом — как делает сам
+   Telegram, чтобы плашки читались на любых обоях (правка владельца 27.08). */
+.tg-top{display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:14px 14px 10px;position:relative;
+  background:linear-gradient(180deg,rgba(0,0,0,.52),rgba(0,0,0,0))}
+/* Плашка с именем — по центру ОКНА, а не средней колонки сетки: колонки по бокам
+   разной ширины, и «центр сетки» стоял левее центра, вразнобой с датой ниже. */
+.tg-who{position:absolute;left:50%;transform:translateX(-50%)}
+.tg-back{display:inline-flex;align-items:center;gap:7px;background:#1C1C1E;border-radius:999px;
+  padding:8px 14px 8px 10px;font-size:15px;font-weight:600}
+.tg-back svg{opacity:.95}
+.tg-back b{background:#fff;color:#000;border-radius:999px;padding:1px 8px;font-size:13px;font-weight:600}
+.tg-who{background:#1C1C1E;border-radius:999px;padding:7px 26px;text-align:center;line-height:1.2}
+.tg-who b{display:block;font-size:15px;font-weight:600}
+.tg-who i{font-style:normal;font-size:13px;color:#8E8E93}
+.tg-ava{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:19px;font-weight:500;
+  background:linear-gradient(160deg,#B18CF0,#8B5CF0)}
+
+.tg-body{padding:6px 12px 10px;display:flex;flex-direction:column;gap:8px;min-height:150px}
+.tg-day{align-self:center;background:#1C1C1E;color:#fff;font-size:13px;font-weight:600;
+  border-radius:999px;padding:4px 12px;margin:2px 0 6px}
+
+.tg-msg{position:relative;max-width:84%;padding:8px 12px 6px;font-size:15.5px;line-height:1.32;
+  border-radius:16px;word-break:break-word}
+.tg-out{align-self:flex-end;border-bottom-right-radius:6px;
+  background:linear-gradient(150deg,#B06BE8 0%,#8B5CF6 55%,#7C4DFF 100%)}
+.tg-in{align-self:flex-start;border-bottom-left-radius:6px;background:#2A2431}
+/* Хвостик у пузыря — та мелочь, без которой глаз не верит */
+.tg-out::after,.tg-in::after{content:"";position:absolute;bottom:0;width:12px;height:16px}
+.tg-out::after{right:-6px;background:radial-gradient(circle at 100% 0,transparent 12px,#7C4DFF 12px)}
+.tg-in::after{left:-6px;background:radial-gradient(circle at 0 0,transparent 12px,#2A2431 12px)}
+.tg-time{float:right;margin:7px 0 -1px 10px;font-size:12px;color:rgba(255,255,255,.62);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.tg-tick{letter-spacing:-3px;margin-left:4px}
+
+/* Низ: круглые кнопки слева, поле с черновиком по ширине текста, кнопка отправки
+   отдельно справа — как в самом Telegram. Смайл и нижний ряд внутри поля убраны
+   (правка владельца 27.08): они делали пузырь выше и шире, чем нужно тексту.
+   Затемнение под панелью — зеркально шапке. */
+.tg-foot{display:flex;gap:8px;align-items:flex-end;padding:10px 12px 14px;
+  background:linear-gradient(0deg,rgba(0,0,0,.52),rgba(0,0,0,0))}
+/* ✦Ai и скрепка — ОДНА вертикальная капсула, а не две круглые кнопки (сверено
+   со скриншотом живого приложения 27.08). Капсула короче пузыря с черновиком
+   и прижата к его низу. */
+.tg-side{flex:none;width:40px;background:#1C1C1E;border-radius:999px;padding:11px 0;
+  display:flex;flex-direction:column;gap:14px;align-items:center;color:#fff}
+.tg-ai{line-height:1;font-size:13px;font-weight:600;text-align:center}
+.tg-ai i{font-style:normal;display:block;font-size:8px;margin:0 0 1px -10px}
+.tg-field{flex:0 1 auto;background:#1C1C1E;border-radius:18px;padding:10px 32px 10px 13px;position:relative;
+  font-size:14.5px;line-height:1.35;color:#C7C7CC}
+.tg-expand{position:absolute;top:11px;right:12px;width:15px;height:15px;opacity:.5}
+.tg-send{width:40px;height:40px;flex:none;border-radius:50%;background:#3E8FE0;display:grid;place-items:center;color:#fff}
+/* Самолётик наклонён вверх, как в живом Telegram (сверено со скриншотом 27.08) */
+.tg-send svg{transform:rotate(-38deg) translate(1px,0)}
+
+/* ── пять шагов ──────────────────────────────────────────────────────── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;
+  background:rgba(16,19,26,.14);border:1px solid rgba(16,19,26,.14);
+  border-radius:10px;overflow:hidden}
+.step{background:var(--card);padding:26px 22px 30px}
+.step .num{font-family:var(--mono);font-size:11px;color:var(--ink);background:var(--green);
+  width:24px;height:24px;display:grid;place-items:center;border-radius:50%;margin-bottom:28px}
+.step h3{font-size:17.5px;margin-bottom:8px}
+.step p{font-size:15px;line-height:1.55;color:rgba(16,19,26,.6)}
+.steps-foot{margin-top:24px;padding-top:24px;border-top:1px solid rgba(16,19,26,.14);
+  display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+.steps-foot h3{white-space:nowrap}
+.steps-foot p{font-size:16.5px;line-height:1.6;color:rgba(16,19,26,.62);max-width:620px}
+
+/* ── две метрики проблемы / три цифры результата ─────────────────────── */
+.cols{display:grid;gap:24px}
+.cols-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.cols-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.stat{border-top:2px solid currentColor;padding-top:24px}
+.stat.mute{border-top-color:rgba(16,19,26,.2)}
+.stat.acc{border-top-color:var(--green)}
+.stat .n{font-size:clamp(30px,3.4vw,44px);letter-spacing:-.035em;margin-bottom:8px;font-weight:400}
+.dark .stat .n span{font-size:20px;color:rgba(242,245,244,.45)}
+.stat h3{font-size:20px;margin-bottom:10px}
+.dark .stat p{font-size:16.5px;line-height:1.6;color:rgba(242,245,244,.62);max-width:460px;text-wrap:pretty}
+.big .n{font-size:clamp(48px,6vw,84px);line-height:1;letter-spacing:-.045em;margin-bottom:0}
+.big h3{font-size:19px;margin:14px 0 8px}
+.big p{font-size:16px;line-height:1.6;color:rgba(16,19,26,.55)}
+.big .n.acc{color:var(--green-dark)}
+
+/* ── первое сообщение ────────────────────────────────────────────────── */
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:stretch}
+.vs > div{border-radius:10px;padding:28px}
+.vs .bad{background:var(--muted-paper);opacity:.8}
+.vs .bad p{font-size:16.5px;line-height:1.65;color:rgba(16,19,26,.55);
+  text-decoration-line:line-through;text-decoration-color:rgba(16,19,26,.2)}
+.vs .good{background:var(--ink);color:var(--tod)}
+.vs .good p{font-size:16.5px;line-height:1.65}
+.vs .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:18px;color:rgba(16,19,26,.45)}
+.vs .good .tag{color:var(--green)}
+
+/* ── парсеры ─────────────────────────────────────────────────────────── */
+.two-text{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 56px}
+.two-text h3{font-size:21px;letter-spacing:-.015em;margin-bottom:14px}
+.two-text p{font-size:16.5px;line-height:1.65;color:rgba(242,245,244,.62);text-wrap:pretty}
+.two-text p + p{margin-top:14px}
+/* Блок «А как у нас» — добавлен в редизайне 27.08: текст секции — про конкурентов,
+   этот — про нас, поэтому он вынесен под обе колонки и выделен зелёной рамкой. */
+.ushow{margin-top:48px;background:var(--tint-dark);border:1px solid rgba(48,190,134,.45);
+  border-radius:12px;padding:32px 36px;display:flex;flex-wrap:wrap;gap:20px 40px;align-items:baseline}
+.ushow .lbl{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--green);flex:none}
+.ushow .lbl i{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none}
+.ushow p{margin:0;flex:1 1 420px;font-size:20px;line-height:1.5;color:var(--tod);text-wrap:pretty}
+.ushow strong{color:var(--green);font-weight:600}
+
+/* ── карточки сигналов ───────────────────────────────────────────────── */
+.signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.signal{background:var(--card);border:1px solid var(--line-light);border-radius:10px;padding:28px}
+.signal .num{font-family:var(--mono);font-size:11px;color:rgba(16,19,26,.4);margin-bottom:44px}
+.signal h3{font-size:21px;letter-spacing:-.015em;margin-bottom:12px}
+.signal p{font-size:16px;line-height:1.6;color:rgba(16,19,26,.62);text-wrap:pretty}
+
+/* ── таблицы: без внешних рамок, только на разделителях ──────────────── */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;min-width:660px;border-collapse:collapse;font-size:16px}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:400;text-align:left;padding:0 16px 14px}
+th:first-child{padding-left:0}
+th:last-child{padding-right:0}
+td{padding:18px 16px;vertical-align:top}
+td:first-child{padding-left:0}
+td:last-child{padding-right:0}
+.dark th{color:rgba(242,245,244,.42)}
+.light th{color:rgba(16,19,26,.42)}
+.dark tbody tr{border-top:1px solid var(--line-dark)}
+.dark tbody tr:last-child{border-bottom:1px solid var(--line-dark)}
+.light tbody tr{border-top:1px solid rgba(16,19,26,.11)}
+.who{font-weight:600;color:var(--green)}
+.dark td.mute{color:rgba(242,245,244,.45)}
+.light td.mute{color:rgba(16,19,26,.62)}
+tr.pick{background:var(--tint-paper);border-top:1px solid var(--green) !important}
+tr.pick td{padding:20px 16px;font-weight:500}
+tr.pick td:first-child{padding-left:18px;font-weight:600;color:var(--green-dark)}
+tr.pick td:nth-child(2){font-weight:600}
+tr.pick td:last-child{padding-right:18px}
+
+/* Мобильные замены таблиц. Горизонтальный скролл на телефоне не работает как
+   навигация: половина читателей его просто не замечает и видит обрезанную таблицу.
+   ВАЖНО: `narrow-only` вешаем на пустую обёртку, а не на сам блок со своим
+   `display`. Иначе более позднее правило (`.ways{display:flex}`) перебивает
+   `display:none` — обожглись на первом прогоне: обе версии таблицы цен
+   показывались на десктопе одна под другой. */
+.narrow-only{display:none}
+.m-only{display:none}
+.lead-card{border:1px solid rgba(242,245,244,.12);border-radius:10px;padding:16px 18px}
+.lead-card + .lead-card{margin-top:12px}
+.lead-card .q{font-size:15.5px;line-height:1.45;margin-bottom:12px}
+.lead-card .a{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13.5px;align-items:baseline}
+.lead-card .a b{font-weight:600;color:var(--green)}
+.lead-card .a span{color:rgba(242,245,244,.42)}
+.ways{display:flex;flex-direction:column;gap:1px;background:rgba(16,19,26,.14);
+  border:1px solid rgba(16,19,26,.14);border-radius:10px;overflow:hidden}
+.way{background:var(--paper);padding:18px}
+.way .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;margin-bottom:6px}
+.way .top b{font-size:16.5px;font-weight:600}
+.way .top i{font-style:normal;font-size:14.5px;color:rgba(16,19,26,.6);text-align:right;flex:none}
+.way p{font-size:14.5px;line-height:1.5;color:rgba(16,19,26,.6)}
+.way.pick{background:var(--tint-paper);padding:20px 18px;border-top:1px solid var(--green-dark)}
+.way.pick .top b{font-size:17px;color:var(--green-dark)}
+.way.pick .top i{font-size:15px;font-weight:600;color:var(--ink)}
+.way.pick p{font-weight:500;color:var(--ink)}
+
+/* ── панель ──────────────────────────────────────────────────────────── */
+.panel-text{max-width:760px;margin-bottom:44px}
+.panel-text h2{font-size:clamp(30px,3.2vw,44px);line-height:1.05;margin-bottom:20px}
+.panel-text p{font-size:17.5px;line-height:1.6;color:rgba(242,245,244,.62);text-wrap:pretty}
+.panel-cta{margin-top:40px}
+.panel-note{font-size:14px;color:rgba(242,245,244,.45);margin-top:14px}
+
+/* СНИМОК ПАНЕЛИ РАСПРЯМЛЯЕТСЯ ПРИ ПРОКРУТКЕ.
+   Карточка выезжает наклонённой от зрителя и встаёт ровно, пока секция идёт
+   по экрану. Сделано без единой строки JavaScript: браузер сам привязывает
+   ход анимации к положению элемента на экране (animation-timeline: view()).
+   Где такой привязки нет — старые Safari и Firefox — правило внутри @supports
+   просто не применяется, и снимок стоит ровно, как обычная картинка в рамке.
+   Ломаться тут нечему: анимация только украшает, содержимое от неё не зависит.
+   Наклон гасится, если в системе включено «уменьшить движение». */
+.shot-stage{perspective:1000px}
+.shot{transform-origin:50% 0;
+  border:4px solid #262d38;border-radius:26px;padding:10px;background:#12161d;
+  box-shadow:0 9px 20px rgba(0,0,0,.30), 0 37px 37px rgba(0,0,0,.26),
+             0 84px 50px rgba(0,0,0,.15), 0 149px 60px rgba(0,0,0,.05)}
+.shot img{width:100%;height:auto;border-radius:16px}
+@supports (animation-timeline: view()){
+  .shot{animation:shot-tilt linear both;animation-timeline:view();
+    animation-range:entry 15% cover 55%}
+}
+/* Только наклон, без увеличения: прибавка масштаба к виду не добавляла ничего.
+   Наклонённая карточка сама по себе на несколько точек шире контейнера —
+   ближний к зрителю край в перспективе проецируется крупнее. Вбок страница
+   от этого не едет: её держит overflow-x:clip у body (проверено — прокрутка
+   по горизонтали не работает). Если когда-нибудь это правило уберут,
+   на телефоне появится горизонтальный скролл именно отсюда. */
+@keyframes shot-tilt{
+  from{transform:rotateX(20deg)}
+  to{transform:rotateX(0deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  .shot{animation:none !important;transform:none !important}
+}
+
+/* ── тарифы (редизайн 27.08: три группы вместо плоского ряда) ─────────
+   Секция сжата отдельно (.sec-tight): карточки стали ниже, прежний ритм
+   104px оставлял вокруг них слишком много воздуха. */
+.sec-tight{padding:72px 0 80px}
+.sec-tight h2{margin-bottom:32px}
+.pgroups{display:flex;flex-direction:column;gap:28px}
+.pgroup-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(242,245,244,.42);margin-bottom:12px}
+/* align-items:start — карточки по высоте своего содержимого: «Поток» короче
+   «Старта», и растягивать его пустотой вниз незачем. */
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;align-items:start}
+.plan{border:1px solid rgba(242,245,244,.14);border-radius:12px;padding:24px;
+  display:flex;flex-direction:column}
+.plan.pick{border-color:var(--green);background:var(--tint-dark)}
+/* Шапка карточки: название слева, цена справа через margin-left:auto; бейдж —
+   В СТРОКЕ с названием (абсолют в углу наезжал на цену на средних ширинах). */
+.plan .head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.plan h3{font-size:17px}
+.plan .head .price{margin-left:auto}
+.badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink);background:var(--green);padding:4px 9px;border-radius:999px}
+.plan .price{font-size:30px;letter-spacing:-.035em;font-weight:400}
+.plan .per{font-size:13.5px;color:rgba(242,245,244,.5);margin-bottom:18px}
+/* У «Агент-аналитика» и «Новой ниши» цена — на отдельной строке над подписью:
+   вариант «в ряд с подписью» переносился по-разному в двух карточках. */
+.plan .price-row{margin-bottom:16px}
+.plan .price-row .per{margin:4px 0 0}
+.plan ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;
+  font-size:14.5px;line-height:1.45;color:rgba(242,245,244,.72)}
+.plan.pick ul{color:rgba(242,245,244,.78)}
+.plan li{display:flex;gap:8px}
+.plan li::before{content:"—";color:var(--green);flex:none}
+
+/* ── FAQ ─────────────────────────────────────────────────────────────────
+   Нативные <details>/<summary> — раскрытие работает без JavaScript.
+   Блок добавлен и ради читателя, и ради поисковиков с AI-ассистентами:
+   прямые вопросы-ответы — то, что они цитируют охотнее всего. Текст ответов
+   продублирован в JSON-LD (FAQPage) в <head> — править синхронно. */
+.faq{max-width:820px}
+.faq details{border-top:1px solid rgba(16,19,26,.12)}
+.faq details:last-child{border-bottom:1px solid rgba(16,19,26,.12)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
+  align-items:baseline;gap:24px;padding:22px 0;font-size:19px;font-weight:600;
+  letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:19px;
+  color:var(--green-dark);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .faq-a{padding:0 0 26px;font-size:16.5px;line-height:1.65;
+  color:rgba(16,19,26,.62);max-width:680px;text-wrap:pretty}
+
+/* ── финальный экран и подвал ────────────────────────────────────────── */
+.cta{background:var(--green);color:var(--ink)}
+.cta .wrap{display:flex;flex-wrap:wrap;gap:40px 56px;align-items:flex-end}
+.cta h2{font-size:clamp(34px,4.2vw,60px);line-height:1.02;letter-spacing:-.035em;
+  flex:1 1 420px;min-width:280px}
+.cta-side{flex:1 1 340px;min-width:280px}
+.cta-side p{font-size:17.5px;line-height:1.6;margin-bottom:28px;color:rgba(16,15,13,.72);text-wrap:pretty}
+footer{background:var(--ink);color:rgba(242,245,244,.5)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;font-size:14.5px;
+  padding-top:36px;padding-bottom:36px;border-top:1px solid rgba(242,245,244,.1)}
+.foot .brand{gap:10px}
+.foot .logo{height:15px;opacity:.6}
+.foot a:hover{color:var(--green)}
+.foot .sp{margin-left:auto}
+
+/* ══ МОБИЛЬНАЯ ВЁРСТКА ═══════════════════════════════════════════════════
+   Порог 820px — точка, где герой перестаёт помещаться в две колонки.
+   Это не сжатие десктопа: таблицы заменяются карточками, тариф «Поток»
+   встаёт первым, плашка метрик и панель ввода в чате уходят. */
+@media (max-width:820px){
+  .wrap{padding:0 20px}
+  .sec{padding:56px 0}
+  h1{font-size:33px;line-height:1.03}
+  h2{font-size:30px;line-height:1.06}
+  .eyebrow{font-size:11px;margin-bottom:16px}
+  .lede{font-size:16px}
+  .h2-gap{margin-bottom:28px}
+  .body{font-size:16px}
+
+  .bar{padding:10px 20px 4px;gap:0 12px;min-height:0}
+  .bar nav{order:3;flex-basis:100%;justify-content:space-between;gap:0 10px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(242,245,244,.5)}
+  .bar nav a{padding:10px 0;display:flex;align-items:center;white-space:nowrap}
+  .dot{width:8px;height:8px}
+  .logo{height:17px}
+  .hdr-cta{padding:8px 16px;font-size:13.5px;min-height:40px}
+  .cta-long,.nav-long{display:none}
+  .cta-short,.nav-short{display:inline}
+
+  .hero{padding:28px 0 24px}
+  .hero-grid{gap:26px}
+  .hero h1{margin-bottom:14px}
+  .hero h1 .line{display:inline}
+  .hero .eyebrow{font-size:10.5px;margin-bottom:14px}
+  .hero-lede{font-size:14.5px;line-height:1.45;margin-bottom:20px}
+  .hero .btn-row{margin-bottom:0;gap:16px;align-items:center;flex-wrap:nowrap}
+  .hero .btn-green{padding:12px 22px;font-size:15px;min-height:46px}
+  /* Кнопка по контенту, не на всю ширину — иначе первый экран читается как форма.
+     Вторая кнопка на телефоне не пилюля, а текстовая ссылка: две пилюли подряд
+     спорят друг с другом за главное действие. */
+  .hero .btn-line{border:0;border-bottom:1px solid rgba(242,245,244,.22);border-radius:0;
+    padding:13px 0;min-height:46px;font-size:14.5px;color:rgba(242,245,244,.6)}
+  .hero .btn-line:hover{border-bottom-color:var(--green);color:var(--green)}
+  .metrics{display:none}
+
+  .tg{border-radius:16px;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+  .tg-top{padding:10px 12px 4px;gap:8px}
+  .tg-back{padding:6px 11px 6px 8px;font-size:13px}
+  .tg-who{padding:6px 16px}
+  .tg-who b{font-size:13.5px}
+  .tg-who i{font-size:11px}
+  .tg-ava{width:36px;height:36px;font-size:16px}
+  .tg-body{padding:4px 10px 8px;min-height:0}
+  .tg-msg{max-width:90%;font-size:14.5px;line-height:1.4}
+  .tg-time{font-size:11px}
+  .tg-foot{padding:2px 10px 12px;gap:8px}
+  .tg-side{width:36px;padding:9px 0;gap:12px}
+  .tg-field{font-size:13.5px;padding:11px 12px 9px}
+
+  .steps{display:flex;flex-direction:column}
+  .step{display:flex;gap:14px;padding:20px}
+  .step .num{margin-bottom:0;flex:none}
+  .step h3{font-size:17px;margin-bottom:5px}
+  .steps-foot{margin-top:20px;padding-top:20px;display:block}
+  .steps-foot h3{white-space:normal;margin-bottom:6px;font-size:18px}
+  .steps-foot p{font-size:15.5px;line-height:1.55}
+
+  .cols{gap:28px}
+  .cols-2,.cols-3{grid-template-columns:1fr}
+  .stat{padding-top:18px}
+  .stat .n{font-size:32px;margin-bottom:6px}
+  .dark .stat .n span{font-size:17px}
+  .stat h3{font-size:18px;margin-bottom:8px}
+  .dark .stat p{font-size:15.5px;line-height:1.55}
+  .big .n{font-size:56px}
+  .big h3{font-size:18px;margin:10px 0 6px}
+  .big p{font-size:15.5px;line-height:1.55}
+
+  .vs{grid-template-columns:1fr;gap:14px}
+  .vs > div{padding:20px}
+  .vs p{font-size:15.5px;line-height:1.6}
+  .vs .tag{font-size:10.5px;margin-bottom:14px}
+  .vs .good br{display:none}
+
+  .two-text{grid-template-columns:1fr;gap:28px}
+  .two-text h3{font-size:18px;margin-bottom:10px}
+  .two-text p{font-size:15.5px;line-height:1.6}
+  .ushow{margin-top:24px;padding:20px;display:block}
+  .ushow .lbl{font-size:11px;margin-bottom:12px}
+  .ushow .lbl i{width:6px;height:6px}
+  .ushow p{font-size:16.5px}
+  .d-only{display:none}
+  .m-only{display:inline}
+
+  .signals{grid-template-columns:1fr;gap:12px}
+  .signal{padding:22px}
+  .signal .num{margin-bottom:14px}
+  .signal h3{font-size:19px;margin-bottom:8px}
+  .signal p{font-size:15.5px;line-height:1.55}
+
+  .wide-only{display:none}
+  .narrow-only{display:block}
+
+  /* Порядок один и тот же на всех экранах: заголовок → объяснение → снимок →
+     кнопка. Сначала показываем, потом зовём нажать. */
+  .panel-text{margin-bottom:24px}
+  .panel-text h2{font-size:30px;margin-bottom:14px}
+  .panel-text p{font-size:16px;line-height:1.55}
+  .shot{border-width:3px;border-radius:20px;padding:7px}
+  .shot img{border-radius:13px}
+  .panel-cta{margin-top:24px}
+  .panel .btn-green{display:flex;width:100%;padding:16px;min-height:52px}
+  .panel-note{text-align:center;font-size:13.5px;margin-top:12px}
+
+  .sec-tight{padding:56px 0}
+  .pgroups{gap:28px}
+  .plans{grid-template-columns:1fr;gap:12px}
+  .plan{padding:22px 20px}
+  /* Порядок на телефоне — «Старт» первым, как на десктопе (решение редизайна 27.08:
+     прежнее «Поток наверх» отменено, внутри группы порядок единый). */
+  .plan h3{font-size:18px}
+  .plan .head{margin-bottom:12px}
+  /* Цена на телефоне — всегда отдельной строкой под названием */
+  .plan .head .price{flex-basis:100%;margin-left:0}
+  .plan .price{font-size:32px}
+  .plan .per{font-size:13.5px;margin-bottom:16px}
+  .plan ul{gap:9px;font-size:14.5px;line-height:1.45}
+
+  .faq summary{font-size:16.5px;padding:18px 0;gap:16px}
+  .faq .faq-a{font-size:15.5px;line-height:1.6;padding-bottom:22px}
+
+  .cta .wrap{display:block}
+  .cta h2{font-size:34px;line-height:1.04;margin-bottom:18px}
+  .cta-side p{font-size:16.5px;line-height:1.55;margin-bottom:24px}
+  .cta .btn-row{flex-direction:column;gap:10px}
+  .cta .btn{width:100%;padding:16px;min-height:52px}
+
+  /* Логотип с копирайтом занимает всю строку, обе ссылки уходят на вторую —
+     иначе «Связаться» одиноко сваливается вниз и выглядит потерянной. */
+  .foot{padding-top:28px;padding-bottom:36px;font-size:14px;gap:12px 24px}
+  .foot .brand{flex-basis:100%}
+  .foot .sp{margin-left:0}
+}
+
+/* Планшет и широкий телефон: разметка уже мобильная, но растягивать четыре
+   ссылки по всей строке нельзя — они расползаются по углам и перестают
+   читаться как один блок. Прижимаем влево. */
+@media (min-width:481px) and (max-width:820px){
+  .bar nav{justify-content:flex-start;gap:0 32px}
+}
+</style>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112213015', 'ym');
+
+    ym(112213015, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112213015" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="Beneuro">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.9 73.6" role="img" aria-label="Beneuro"> <g transform="translate(-6.900 72.000) scale(0.05 -0.05)"><path fill="currentColor" d="M670 -30Q509 -30 401 45Q293 120 238.5 249Q184 378 184 540Q184 702 238 831Q292 960 397 1035Q502 1110 656 1110Q811 1110 926 1036Q1041 962 1104.5 833.5Q1168 705 1168 540Q1168 378 1105.5 249Q1043 120 931 45Q819 -30 670 -30ZM138 0L138 1440L412 1440L412 740L378 740L378 0ZM626 212Q714 212 770 256Q826 300 853 374.5Q880 449 880 540Q880 630 852 704.5Q824 779 765.5 823.5Q707 868 616 868Q531 868 478.5 827Q426 786 402 712Q378 638 378 540Q378 442 402 368Q426 294 480.5 253Q535 212 626 212Z M1834 -30Q1668 -30 1541.5 41.5Q1415 113 1343.5 238.5Q1272 364 1272 526Q1272 703 1342 834Q1412 965 1535 1037.5Q1658 1110 1818 1110Q1988 1110 2107 1030Q2226 950 2283 805Q2340 660 2323 464L2054 464L2054 564Q2054 729 2001.5 801.5Q1949 874 1830 874Q1691 874 1625.5 789.5Q1560 705 1560 540Q1560 389 1625.5 306.5Q1691 224 1818 224Q1898 224 1955 259Q2012 294 2042 360L2314 282Q2253 134 2121.5 52Q1990 -30 1834 -30ZM1476 464L1476 666L2192 666L2192 464Z M3198 0L3198 510Q3198 547 3194 604.5Q3190 662 3169 720Q3148 778 3100.5 817Q3053 856 2966 856Q2931 856 2891 845Q2851 834 2816 802.5Q2781 771 2758.5 710Q2736 649 2736 548L2580 622Q2580 750 2632 862Q2684 974 2788.5 1043Q2893 1112 3052 1112Q3179 1112 3259 1069Q3339 1026 3383.5 960Q3428 894 3447 822.5Q3466 751 3470 692Q3474 633 3474 606L3474 0ZM2460 0L2460 1080L2702 1080L2702 722L2736 722L2736 0Z M4160 -30Q3994 -30 3867.5 41.5Q3741 113 3669.5 238.5Q3598 364 3598 526Q3598 703 3668 834Q3738 965 3861 1037.5Q3984 1110 4144 1110Q4314 1110 4433 1030Q4552 950 4609 805Q4666 660 4649 464L4380 464L4380 564Q4380 729 4327.5 801.5Q4275 874 4156 874Q4017 874 3951.5 789.5Q3886 705 3886 540Q3886 389 3951.5 306.5Q4017 224 4144 224Q4224 224 4281 259Q4338 294 4368 360L4640 282Q4579 134 4447.5 52Q4316 -30 4160 -30ZM3802 464L3802 666L4518 666L4518 464Z M5220 -32Q5093 -32 5013 11Q4933 54 4888.5 120Q4844 186 4825 257.5Q4806 329 4802 388Q4798 447 4798 474L4798 1080L5074 1080L5074 570Q5074 533 5078 475.5Q5082 418 5103 360Q5124 302 5171.5 263Q5219 224 5306 224Q5341 224 5381 235Q5421 246 5456 277.5Q5491 309 5513.5 370.5Q5536 432 5536 532L5692 458Q5692 330 5640 218Q5588 106 5483.5 37Q5379 -32 5220 -32ZM5570 0L5570 358L5536 358L5536 1080L5810 1080L5810 0Z M6034 0L6034 1080L6274 1080L6274 816L6248 850Q6269 906 6304 952Q6339 998 6390 1028Q6429 1052 6475 1065.5Q6521 1079 6570 1082.5Q6619 1086 6668 1080L6668 826Q6623 840 6563.5 835.5Q6504 831 6456 808Q6408 786 6375 749.5Q6342 713 6325 663.5Q6308 614 6308 552L6308 0Z M7268 -30Q7105 -30 6982 43Q6859 116 6790.5 244.5Q6722 373 6722 540Q6722 709 6792 837.5Q6862 966 6985 1038Q7108 1110 7268 1110Q7431 1110 7554.5 1037Q7678 964 7747 835.5Q7816 707 7816 540Q7816 372 7746.5 243.5Q7677 115 7553.5 42.5Q7430 -30 7268 -30ZM7268 224Q7399 224 7463.5 312.5Q7528 401 7528 540Q7528 684 7462.5 770Q7397 856 7268 856Q7179 856 7122 816Q7065 776 7037.5 705Q7010 634 7010 540Q7010 395 7075.5 309.5Q7141 224 7268 224Z"/></g> </svg></span>
+    </a>
+    <nav>
+      <!-- На телефоне четыре ссылки должны влезать в ряд без скролла, поэтому
+           «Как работает» там сокращено до «Процесс». -->
+      <a href="#how"><span class="nav-long">Как работает</span><span class="nav-short">Процесс</span></a>
+      <a href="#numbers">Цифры</a>
+      <a href="#panel">Панель</a>
+      <a href="#price">Цены</a>
+    </nav>
+    <a class="btn btn-green hdr-cta" href="https://t.me/beneuro_bot"><span class="cta-long">Начать в Telegram →</span><span class="cta-short">Telegram →</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. Первый экран -->
+<section class="sec dark hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow acc">AI-отдел продаж</div>
+      <!-- Перенос строки задан не через <br>, а вторым блоком: на телефоне <br>
+           пришлось бы прятать, а спрятанный <br> склеивает слова («клиентови»). -->
+      <h1><span class="line">Сам находит клиентов</span> <span class="line">и пишет им <mark>первым</mark></span></h1>
+      <p class="hero-lede">Читаем чаты, каналы и вакансии. Находим тех, кому прямо сейчас нужен ваш продукт или услуга, и готовим персональное первое сообщение каждому. Вы открываете панель и смотрите, кому написал наш агент.</p>
+      <div class="btn-row">
+        <a class="btn btn-green" href="https://t.me/beneuro_bot">Начать в Telegram →</a>
+        <a class="btn btn-line" href="https://demo.beneuro.ai"><span class="cta-long">Посмотреть панель</span><span class="cta-short">Панель</span></a>
+      </div>
+      <div class="metrics">
+        <div class="wide"><b>от 10%</b><span>конверсия из сообщения в ответ</span></div>
+        <div><b>20 мин</b><span>настройка</span></div>
+      </div>
+    </div>
+
+    <!-- Переписка вместо карточки-схемы: человек узнаёт свой мессенджер и понимает,
+         что получит, без единого слова объяснения. -->
+    <div class="hero-side">
+      <figure class="tg">
+        <div class="tg-top">
+          <span class="tg-back" aria-hidden="true">
+            <svg width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 1.5 2 9l7.5 7.5"/></svg>
+            <b>8712</b>
+          </span>
+          <span class="tg-who"><b>Клиент</b><i>был(а) недавно</i></span>
+          <span class="tg-ava" aria-hidden="true">К</span>
+        </div>
+
+        <div class="tg-body">
+          <div class="tg-day">19 августа</div>
+
+          <div class="tg-msg tg-out">Здравствуйте! Увидел ваш вопрос про ФБС. Я бы пока рекомендовал не
+            везти товар на склады маркетплейса, опасно. У нас склад в Чертаново, работаем по ФБС — можем
+            принять товар на этой неделе, чтобы продажи не стояли. Если интересно, расскажу по срокам и
+            объёмам.<span class="tg-time">14:16<span class="tg-tick">✓✓</span></span></div>
+
+          <div class="tg-msg tg-in">Здравствуйте! Да, расскажите про ваши тарифы<span class="tg-time">15:42</span></div>
+        </div>
+
+        <div class="tg-foot">
+          <div class="tg-side" aria-hidden="true">
+            <span class="tg-ai"><i>✦</i>Ai</span>
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round"><path d="M21.4 11.1 12.3 20a5.5 5.5 0 0 1-7.8-7.8l9-9a3.7 3.7 0 1 1 5.2 5.2l-9 9a1.8 1.8 0 1 1-2.6-2.6l8.3-8.3"/></svg>
+          </div>
+          <div class="tg-field">
+            <svg class="tg-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true"><path d="M9 3H3v6M15 3h6v6M9 21H3v-6M15 21h6v-6"/></svg>
+            [его вопрос: «Боюсь везти на склады маркетплейса товар, подскажите, что делать — везти
+            на склад ВБ или искать фулфилмент для ФБС?»]
+          </div>
+          <span class="tg-send" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 21 22 12 2.5 3l.01 7L16 12 2.51 14z"/></svg></span>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Как устроено -->
+<section id="how" class="sec light">
+  <div class="wrap">
+    <div class="eyebrow">Как устроено</div>
+    <h2 class="h2-gap">Пять шагов, и все без вас</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div>
+          <h3>Находим сигнал</h3>
+          <p>Читаем чаты, каналы и вакансии, находим потенциальных клиентов в instagram, telegram, Вконтакте, Max и др.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div>
+          <h3>Проверяем компанию</h3>
+          <p>Анализируем боль этой компании, что им потенциально нужно</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div>
+          <h3>Ищем контакт</h3>
+          <p>Находим у клиента telegram, номер телефона, почту, вконтакте или instagram</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <div>
+          <h3>Пишем текст</h3>
+          <p>Персональный, сосставленный из анализа компании</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">5</div>
+        <div>
+          <h3>Кладём в панель</h3>
+          <p>Вы смотрите уже готовый результат и ждёте новых клиентов</p>
+        </div>
+      </div>
+    </div>
+    <div class="steps-foot">
+      <h3>Настройка — 20 минут</h3>
+      <p>Двенадцать вопросов в боте: кто вы, кого берёте в клиенты, как разговариваете. Дальше мы сами.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Какие проблемы мы решаем -->
+<section class="sec dark">
+  <div class="wrap">
+    <div class="eyebrow">Какие проблемы мы решаем</div>
+    <h2 class="h2-gap" style="max-width:900px">Мы решаем не хватку объёма сообщений и проблему слабых конверсий</h2>
+    <div class="cols cols-2">
+      <div class="stat">
+        <div class="n">~100 000 ₽<span>/мес</span></div>
+        <h3>Объёма не хватает</h3>
+        <p>Столько стоит менеджер по продажам со всеми налогами и рабочим местом. И он всё равно физически обходит десятки контактов в день, а не сотни.</p>
+      </div>
+      <div class="stat">
+        <div class="n">0,4–3,4 <span>% ответов</span></div>
+        <h3>Конверсия слабая</h3>
+        <p>Столько дают холодные рассылки. Причина простая: это один и тот же текст, отправленный всем подряд, и получатель это видит с первой строки. Наши конверсии находятся в диапазоне 8-35%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Первое сообщение -->
+<section class="sec light">
+  <div class="wrap">
+    <div class="eyebrow">Первое сообщение</div>
+    <h2 class="h2-gap">Примеры первого сообщения</h2>
+    <div class="vs">
+      <div class="bad">
+        <div class="tag">Обычная рассылка</div>
+        <p>Здравствуйте! Меня зовут Анна, компания «Топы продаж». Мы предлагаем полный комплекс ведения магазина для маркетплейсов: работа с карточками, поставками, внутреннее продвижение. Индивидуальный подход, выгодные условия. Готовы обсудить сотрудничество!</p>
+      </div>
+      <div class="good">
+        <div class="tag">Наш черновик</div>
+        <p>Здравствуйте! Увидел вашу вакансиюпо OZON. Посмотрел ваши магазины: на Wildberries вы стабильно делаете 1,5-2,5 млн в месяц, а на Ozon пока около 200 тысяч — и при этом объём выручки у похожих товаров на Ozon больше, чем на WB.<br>Похоже, площадкой просто никто не занимался вплотную.<br>У меня огромный опыт продвижения крупных магазинов, свои методики продвижения. Опыт с озон с 2023 года. Из близкого к вам: бренд CHEKASSO (косметика) — 3 года стояли на 0,8 млн, за 6 месяцев вышли на 2,2 млн, просто сменив стратегию продвижения.<br>Если интересна помощь с продвижением, буду ждать вашего сообщения!</p>
+      </div>
+    </div>
+    <p class="body" style="margin-top:28px;max-width:680px;font-size:17px"><span class="d-only">Слева — текст, который подошёл бы кому угодно. Справа</span><span class="m-only">Сверху — текст, который подошёл бы кому угодно. <br>Снизу</span> — текст, который подходит только ему. Это и есть вся разница в конверсии.</p>
+  </div>
+</section>
+
+<!-- 5. Отличие от парсеров -->
+<section class="sec dark">
+  <div class="wrap">
+    <div class="eyebrow">Отличие от парсеров</div>
+    <h2 class="h2-gap">Чем мы отличаемся от обычного парсера?</h2>
+    <div class="two-text">
+      <div>
+        <h3>Как ищут лиды наши конкуренты</h3>
+        <p>Парсеры ищут лидов по ключевым словам: "купить", "дом", "квартира". Парсер не анализирует это реальный лид, или рассылка от бота</p>
+      </div>
+      <div>
+        <h3>Почему стоп-слова это не лечат</h3>
+        <p>Бот и живой человек пишут одними и теми же словами. Отличить их можно, только прочитав сообщение и поняв, кто его написал и зачем.</p>
+      </div>
+    </div>
+    <div class="ushow">
+      <div class="lbl"><i aria-hidden="true"></i>А как у нас</div>
+      <p>Наш агент читает каждое сообщение целиком — поэтому в вашей панели не окажется ни ботов, ни таких же подрядчиков, как вы. <strong>Только реальные лиды.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Что мы ищем -->
+<section class="sec light">
+  <div class="wrap">
+    <div class="eyebrow">Что мы ищем</div>
+    <h2>Ищем человека, которому нужно прямо сейчас</h2>
+    <p class="lede" style="margin:16px 0 52px">Не «компанию из базы», а конкретный повод, по которому уместно написать сегодня.</p>
+    <div class="signals">
+      <div class="signal">
+        <div class="num">01</div>
+        <h3>Вакансия</h3>
+        <p>«Менеджер по маркетплейсам Ozon» — бренд одежды, 200 артикулов, торгует только на WB. Значит, выходит на новую площадку и ему нужны руки.</p>
+      </div>
+      <div class="signal">
+        <div class="num">02</div>
+        <h3>Вопрос в чате</h3>
+        <p>«Приёмка встала, товар лежит». Человек описал свою боль сам, своими словами, и ждёт ответа именно сейчас.</p>
+      </div>
+      <div class="signal">
+        <div class="num">03</div>
+        <h3>Старое объявление</h3>
+        <p>Висит месяц, человека так и не нашли. Сигнал сильнее свежего: значит, проблема не решилась.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Чей это лид -->
+<section class="sec dark">
+  <div class="wrap">
+    <div class="eyebrow acc">Как мы понимаем, чей это лид</div>
+    <h2 style="max-width:900px">Один и тот же человек — лид для разных подрядчиков по-разному</h2>
+    <p class="lede" style="margin:16px 0 48px">Поэтому два клиента одной ниши у нас не конкурируют за одного человека: каждому уходит то, что относится к его услуге.</p>
+
+    <div class="scroll wide-only">
+      <table>
+        <thead><tr><th>Что спросил человек</th><th>Чей это лид</th><th>Кому не подходит</th></tr></thead>
+        <tbody>
+          <tr><td>«Где хранить, приёмка встала»</td><td class="who">Фулфилмент</td><td class="mute">агентству, дизайнеру</td></tr>
+          <tr><td>«СПП обнулилась, продажи упали»</td><td class="who">Агентство</td><td class="mute">складу, карго</td></tr>
+          <tr><td>«CTR 1,2% при норме 4»</td><td class="who">Дизайн-студия</td><td class="mute">складу, бухгалтеру</td></tr>
+          <tr><td>«Как считать налоги с маркетплейсов»</td><td class="who">Бухгалтер</td><td class="mute">всем остальным</td></tr>
+          <tr><td>«Кто возит из Гуанчжоу»</td><td class="who">Карго</td><td class="mute">всем остальным</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="narrow-only">
+      <div class="lead-card"><div class="q">«Где хранить, приёмка встала»</div><div class="a"><b>→ Фулфилмент</b><span>не агентству, не дизайнеру</span></div></div>
+      <div class="lead-card"><div class="q">«СПП обнулилась, продажи упали»</div><div class="a"><b>→ Агентство</b><span>не складу, не карго</span></div></div>
+      <div class="lead-card"><div class="q">«CTR 1,2% при норме 4»</div><div class="a"><b>→ Дизайн-студия</b><span>не складу, не бухгалтеру</span></div></div>
+      <div class="lead-card"><div class="q">«Как считать налоги с маркетплейсов»</div><div class="a"><b>→ Бухгалтер</b><span>не всем остальным</span></div></div>
+      <div class="lead-card"><div class="q">«Кто возит из Гуанчжоу»</div><div class="a"><b>→ Карго</b><span>не всем остальным</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Цифры -->
+<section id="numbers" class="sec light">
+  <div class="wrap">
+    <div class="eyebrow">Как это выглядит в работе</div>
+    <h2>Одна неделя на реальном клиенте</h2>
+    <p class="lede" style="margin:16px 0 56px">Агентство маркетплейсов, ниша «селлеры»</p>
+    <div class="cols cols-3">
+      <div class="stat big acc">
+        <div class="n">508</div>
+        <h3>лида найдено</h3>
+        <p>Проверенных карточек с контактом и готовым текстом.</p>
+      </div>
+      <div class="stat big mute">
+        <div class="n">124</div>
+        <h3>отправлено</h3>
+        <p>Отправленных меньше, чем найденных - из-за лимитов по отправке на 1 аккаунт</p>
+      </div>
+      <div class="stat big acc">
+        <div class="n acc">26%</div>
+        <h3>ответили</h3>
+        <p>32 ответа из 124. По лидам из чатов — 38%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Панель -->
+<section id="panel" class="sec dark">
+  <div class="wrap panel">
+    <div class="panel-text">
+      <div class="eyebrow">Панель</div>
+      <h2>Каждый лид — карточка, а не строчка в таблице</h2>
+      <p>Кто это, почему подходит, что он написал и готовый текст ответа. Открывается с телефона по ссылке, без установки и регистрации. Как только лид ответит — бот напишет вам в Telegram.</p>
+    </div>
+    <!-- Два снимка вместо одного: широкий снимок доски, сжатый до ширины телефона,
+         превращается в нечитаемое пятно. На узком экране показываем ту же панель,
+         снятую с телефона. Снимки живые, с демо-данными: demo.beneuro.ai. -->
+    <div class="shot-stage">
+      <div class="shot">
+        <picture>
+          <source media="(max-width:820px)" srcset="panel-shot-mobile.jpg">
+          <img src="panel-shot.jpg" alt="Панель Beneuro: доска лидов с карточками — кто это, почему подходит и готовый текст" loading="lazy">
+        </picture>
+      </div>
+    </div>
+    <div class="panel-cta">
+      <a class="btn btn-green" href="https://demo.beneuro.ai">Открыть демо-панель</a>
+      <div class="panel-note">Демо с выдуманными лидами — можно смотреть свободно.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Сравнение способов -->
+<section class="sec light">
+  <div class="wrap">
+    <div class="eyebrow">Сколько стоят другие способы</div>
+    <h2 class="h2-gap">С чем сравнивать</h2>
+
+    <div class="scroll wide-only">
+      <table>
+        <thead><tr><th style="width:24%">Способ</th><th style="width:26%">Сколько стоит</th><th>Что получаете</th></tr></thead>
+        <tbody>
+          <tr><td>Свой менеджер</td><td class="mute">~100 000 ₽/мес</td><td class="mute">Десятки контактов в день, отпуска, обучение</td></tr>
+          <tr><td>Реклама</td><td class="mute">3 000–12 000 ₽ за лид</td><td class="mute">Заявку, если объявление попало в момент</td></tr>
+          <tr><td>Парсеры Telegram</td><td class="mute">2 000–10 000 ₽/мес</td><td class="mute">Находят всех подряд, писать и разбирать кто реальный лил - вам</td></tr>
+          <tr class="pick"><td>Beneuro</td><td>от 10 000 ₽/мес</td><td>Проверенную карточку с готовым текстом</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="narrow-only"><div class="ways">
+      <div class="way"><div class="top"><b>Свой менеджер</b><i>~100 000 ₽/мес</i></div><p>Десятки контактов в день, отпуска, обучение</p></div>
+      <div class="way"><div class="top"><b>Реклама</b><i>3 000–12 000 ₽ / лид</i></div><p>Заявку, если объявление попало в момент</p></div>
+      <div class="way"><div class="top"><b>Парсеры Telegram</b><i>2 000–10 000 ₽/мес</i></div><p>Находят всех подряд, писать и разбирать кто реальный лил - вам</p></div>
+      <div class="way pick"><div class="top"><b>Beneuro</b><i>от 10 000 ₽/мес</i></div><p>Проверенную карточку с готовым текстом</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- 11. Тарифы (редизайн 27.08: три группы — «Лид-агент», «Агент-аналитик», «Новая ниша») -->
+<section id="price" class="sec sec-tight dark">
+  <div class="wrap">
+    <div class="eyebrow acc">Тарифы</div>
+    <h2 style="max-width:820px">Наши тарифы</h2>
+    <div class="pgroups">
+      <div>
+        <div class="pgroup-label">Лид-агент</div>
+        <div class="plans">
+          <div class="plan">
+            <div class="head"><h3>Старт</h3><div class="price">10 000 ₽</div></div>
+            <div class="per">в месяц · 500 лидов</div>
+            <ul>
+              <li>Все каналы: чаты, каналы, вакансии</li>
+              <li>Панель и уведомления в Telegram</li>
+              <li>Готовый текст к каждому лиду</li>
+              <li>Отправка с вашего аккаунта, когда будете готовы</li>
+              <li>Анализ клиента из его сообщения или объявления, без интернет-ресерча</li>
+            </ul>
+          </div>
+          <div class="plan pick">
+            <div class="head"><h3>Поток</h3><span class="badge">Чаще берут</span><div class="price">20 000 ₽</div></div>
+            <div class="per">в месяц · 1250 лидов</div>
+            <ul>
+              <li>Всё из «Старта»</li>
+              <li>Больше источников и глубже архив</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="plans">
+        <div>
+          <div class="pgroup-label">Агент-аналитик</div>
+          <div class="plan">
+            <div class="price-row">
+              <div class="price">10 000 ₽</div>
+              <div class="per">в месяц · дополнительно к «Лид-агенту»</div>
+            </div>
+            <ul>
+              <li>Глубокий анализ клиента в сети интернет: соцсети, финансовые показатели компании через сервисы аналитики и другие источники</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="pgroup-label">Новая ниша</div>
+          <div class="plan">
+            <div class="price-row">
+              <div class="price">50 000 ₽</div>
+              <div class="per">разово · плюс месяц бесплатно</div>
+            </div>
+            <ul>
+              <li>Если вашей ниши нет в нашем списке</li>
+              <li>Разбираем нишу с нуля: кто лид и где живёт</li>
+              <li>Первый месяц работы — без оплаты</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. FAQ — вопросы дублируются в JSON-LD (FAQPage) в <head>, править синхронно -->
+<section id="faq" class="sec light">
+  <div class="wrap">
+    <div class="eyebrow">Вопросы и ответы</div>
+    <h2 class="h2-gap">Частые вопросы</h2>
+    <div class="faq">
+      <details>
+        <summary>Что такое Beneuro?</summary>
+        <p class="faq-a">AI-отдел продаж для компаний, которые продают услуги селлерам маркетплейсов. Агент читает чаты, каналы и вакансии, находит тех, кому услуга нужна прямо сейчас, и готовит персональное первое сообщение каждому. Вы получаете готовые карточки лидов в панели.</p>
+      </details>
+      <details>
+        <summary>Сколько это стоит?</summary>
+        <p class="faq-a">«Старт» — 10 000 ₽ в месяц за 500 лидов, «Поток» — 20 000 ₽ за 1250 лидов. Глубокий анализ каждого лида («Агент-аналитик») — плюс 10 000 ₽ в месяц. Если вашей ниши у нас ещё нет, разбираем её с нуля за 50 000 ₽ разово — и месяц работы бесплатно.</p>
+      </details>
+      <details>
+        <summary>Что вы считаете лидом?</summary>
+        <p class="faq-a">Найденную и проверенную карточку: кто это, почему подходит именно вам, контакт и готовый текст первого сообщения. Не «сообщение из чата» и не факт отправки — отправка включается отдельно, когда вам понравится качество текстов.</p>
+      </details>
+      <details>
+        <summary>Какая конверсия в ответы?</summary>
+        <p class="faq-a">Холодные рассылки дают 0,4–3,4% ответов. Наши конверсии — в диапазоне 8–35% в зависимости от ниши и канала: сообщение опирается на то, что человек написал сам. На живом клиенте за неделю ответили 26% получателей, по лидам из чатов — 38%.</p>
+      </details>
+      <details>
+        <summary>Чем это отличается от парсера чатов?</summary>
+        <p class="faq-a">Парсер ищет по ключевым словам и присылает всех подряд — включая ботов и таких же подрядчиков, как вы. Наш агент читает каждое сообщение целиком и понимает, кто его написал и зачем, поэтому в панель попадают только реальные лиды.</p>
+      </details>
+      <details>
+        <summary>Вы отправляете сообщения сами? Это безопасно для аккаунта?</summary>
+        <p class="faq-a">Отправка идёт с вашего аккаунта Telegram и включается только когда вы посмотрели тексты в панели и готовы. Шлём небольшими порциями в пределах дневного лимита и только в рабочие часы — чтобы аккаунт не попадал под ограничения мессенджера. До включения отправки все тексты просто лежат в панели.</p>
+      </details>
+      <details>
+        <summary>Кому подходит Beneuro?</summary>
+        <p class="faq-a">Всем, кто продаёт услугу или продукт с чеком от 10 000 ₽ и хочет больше входящих диалогов: при таком чеке система окупается с первой же продажи. Сильнее всего мы сейчас в нишах вокруг маркетплейсов — агентства по Wildberries и Ozon, фулфилменты, фото- и дизайн-студии, карго, бухгалтеры. Если вашей ниши у нас ещё нет — разберём её с нуля по тарифу «Новая ниша».</p>
+      </details>
+      <details>
+        <summary>Нужно ли что-то устанавливать?</summary>
+        <p class="faq-a">Нет. Панель открывается по ссылке с телефона или компьютера, без установки и регистрации. Когда лид отвечает, уведомление приходит вам в Telegram.</p>
+      </details>
+      <details>
+        <summary>Можно ли посмотреть, как это работает, до оплаты?</summary>
+        <p class="faq-a">Да — откройте демо-панель на demo.beneuro.ai. Это живая панель с выдуманными лидами: карточки, готовые тексты, аналитика по каналам. Без регистрации.</p>
+      </details>
+      <details>
+        <summary>Как быстро можно запуститься?</summary>
+        <p class="faq-a">Настройка — около 20 минут: бот задаёт двенадцать вопросов о том, кто вы, кого берёте в клиенты и как разговариваете. Дальше поиск и первые лиды — на нас.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 13. Финал -->
+<section class="sec cta">
+  <div class="wrap">
+    <h2>Двенадцать вопросов — и мы начинаем искать</h2>
+    <div class="cta-side">
+      <p>Бот спросит, кто вы, кого берёте в клиенты и как разговариваете с людьми. Это минут двадцать. Дальше настройка и первые лиды — на нас.</p>
+      <div class="btn-row">
+        <a class="btn btn-ink" href="https://t.me/beneuro_bot">Начать в Telegram →</a>
+        <a class="btn btn-line-ink" href="https://t.me/keshapa">Задать вопрос живому человеку</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="brand"><span class="logo" aria-label="Beneuro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.9 73.6" role="img" aria-label="Beneuro"> <g transform="translate(-6.900 72.000) scale(0.05 -0.05)"><path fill="currentColor" d="M670 -30Q509 -30 401 45Q293 120 238.5 249Q184 378 184 540Q184 702 238 831Q292 960 397 1035Q502 1110 656 1110Q811 1110 926 1036Q1041 962 1104.5 833.5Q1168 705 1168 540Q1168 378 1105.5 249Q1043 120 931 45Q819 -30 670 -30ZM138 0L138 1440L412 1440L412 740L378 740L378 0ZM626 212Q714 212 770 256Q826 300 853 374.5Q880 449 880 540Q880 630 852 704.5Q824 779 765.5 823.5Q707 868 616 868Q531 868 478.5 827Q426 786 402 712Q378 638 378 540Q378 442 402 368Q426 294 480.5 253Q535 212 626 212Z M1834 -30Q1668 -30 1541.5 41.5Q1415 113 1343.5 238.5Q1272 364 1272 526Q1272 703 1342 834Q1412 965 1535 1037.5Q1658 1110 1818 1110Q1988 1110 2107 1030Q2226 950 2283 805Q2340 660 2323 464L2054 464L2054 564Q2054 729 2001.5 801.5Q1949 874 1830 874Q1691 874 1625.5 789.5Q1560 705 1560 540Q1560 389 1625.5 306.5Q1691 224 1818 224Q1898 224 1955 259Q2012 294 2042 360L2314 282Q2253 134 2121.5 52Q1990 -30 1834 -30ZM1476 464L1476 666L2192 666L2192 464Z M3198 0L3198 510Q3198 547 3194 604.5Q3190 662 3169 720Q3148 778 3100.5 817Q3053 856 2966 856Q2931 856 2891 845Q2851 834 2816 802.5Q2781 771 2758.5 710Q2736 649 2736 548L2580 622Q2580 750 2632 862Q2684 974 2788.5 1043Q2893 1112 3052 1112Q3179 1112 3259 1069Q3339 1026 3383.5 960Q3428 894 3447 822.5Q3466 751 3470 692Q3474 633 3474 606L3474 0ZM2460 0L2460 1080L2702 1080L2702 722L2736 722L2736 0Z M4160 -30Q3994 -30 3867.5 41.5Q3741 113 3669.5 238.5Q3598 364 3598 526Q3598 703 3668 834Q3738 965 3861 1037.5Q3984 1110 4144 1110Q4314 1110 4433 1030Q4552 950 4609 805Q4666 660 4649 464L4380 464L4380 564Q4380 729 4327.5 801.5Q4275 874 4156 874Q4017 874 3951.5 789.5Q3886 705 3886 540Q3886 389 3951.5 306.5Q4017 224 4144 224Q4224 224 4281 259Q4338 294 4368 360L4640 282Q4579 134 4447.5 52Q4316 -30 4160 -30ZM3802 464L3802 666L4518 666L4518 464Z M5220 -32Q5093 -32 5013 11Q4933 54 4888.5 120Q4844 186 4825 257.5Q4806 329 4802 388Q4798 447 4798 474L4798 1080L5074 1080L5074 570Q5074 533 5078 475.5Q5082 418 5103 360Q5124 302 5171.5 263Q5219 224 5306 224Q5341 224 5381 235Q5421 246 5456 277.5Q5491 309 5513.5 370.5Q5536 432 5536 532L5692 458Q5692 330 5640 218Q5588 106 5483.5 37Q5379 -32 5220 -32ZM5570 0L5570 358L5536 358L5536 1080L5810 1080L5810 0Z M6034 0L6034 1080L6274 1080L6274 816L6248 850Q6269 906 6304 952Q6339 998 6390 1028Q6429 1052 6475 1065.5Q6521 1079 6570 1082.5Q6619 1086 6668 1080L6668 826Q6623 840 6563.5 835.5Q6504 831 6456 808Q6408 786 6375 749.5Q6342 713 6325 663.5Q6308 614 6308 552L6308 0Z M7268 -30Q7105 -30 6982 43Q6859 116 6790.5 244.5Q6722 373 6722 540Q6722 709 6792 837.5Q6862 966 6985 1038Q7108 1110 7268 1110Q7431 1110 7554.5 1037Q7678 964 7747 835.5Q7816 707 7816 540Q7816 372 7746.5 243.5Q7677 115 7553.5 42.5Q7430 -30 7268 -30ZM7268 224Q7399 224 7463.5 312.5Q7528 401 7528 540Q7528 684 7462.5 770Q7397 856 7268 856Q7179 856 7122 816Q7065 776 7037.5 705Q7010 634 7010 540Q7010 395 7075.5 309.5Q7141 224 7268 224Z"/></g> </svg></span>© 2026</span>
+    <!-- Ссылки на SEO-статьи: нужны и читателю, и поисковику — без внутренней
+         ссылки с главной новые страницы индексируются заметно дольше. -->
+    <span><a href="/stati">Статьи</a></span>
+    <span class="sp"><a href="https://t.me/beneuro_bot">Telegram-бот</a></span>
+    <span><a href="https://t.me/keshapa">Связаться</a></span>
+  </div>
+</footer>
+
+<!-- ЗАПАСНОЙ ПУТЬ ДЛЯ НАКЛОНА СНИМКА ПАНЕЛИ.
+     Основной способ — чистый CSS (animation-timeline: view() в стилях выше): браузер сам
+     привязывает ход анимации к положению блока на экране. Но так умеют не все — Safari
+     на айфоне научился этому только в последней версии, и у владельца на телефоне эффекта
+     не было вовсе. Этот кусок считает наклон вручную и включается ТОЛЬКО там, где CSS-способ
+     недоступен: где доступен — скрипт сразу выходит и ничего не делает.
+     Это единственный JavaScript на странице, и он только украшает: если он не отработает,
+     снимок просто стоит ровно. Ничего, что нужно прочитать или нажать, от него не зависит. -->
+<script>
+(function () {
+  var card = document.querySelector('.shot');
+  if (!card) return;
+  if (window.CSS && CSS.supports && CSS.supports('animation-timeline', 'view()')) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var MAX = 20;      // тот же наклон в градусах, что и в CSS-варианте
+  var waiting = false;
+
+  function draw() {
+    waiting = false;
+    var box = card.getBoundingClientRect();
+    var vh = window.innerHeight || 1;
+    // 0 — карточка только показалась снизу экрана, 1 — дошла до верхней четверти
+    var done = (vh - box.top) / (vh * 0.75);
+    if (done < 0) done = 0;
+    if (done > 1) done = 1;
+    card.style.transform = 'rotateX(' + (MAX * (1 - done)).toFixed(2) + 'deg)';
+  }
+
+  // Пересчитываем не на каждое событие прокрутки, а раз в кадр: иначе на слабом
+  // телефоне вычисления начинают отставать от пальца и прокрутка дёргается.
+  function schedule() {
+    if (waiting) return;
+    waiting = true;
+    requestAnimationFrame(draw);
+  }
+
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule, { passive: true });
+  draw();
+})();
+</script>
+
+</body>
+</html>
