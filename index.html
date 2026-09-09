@@ -219,7 +219,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(16,15,13,.82);
 .logo svg{height:100%;width:auto;display:block}
 .bar nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14.5px;color:rgba(242,245,244,.62)}
 .bar nav a:hover{color:var(--green)}
-.hdr-cta{margin-left:auto;padding:11px 20px;font-size:14.5px}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+.hdr-cta{padding:11px 20px;font-size:14.5px}
 .cta-short,.nav-short{display:none}
 
 /* ── первый экран ────────────────────────────────────────────────────── */
@@ -575,6 +576,8 @@ footer{background:var(--ink);color:rgba(242,245,244,.5)}
   .dot{width:8px;height:8px}
   .logo{height:17px}
   .hdr-cta{padding:8px 16px;font-size:13.5px;min-height:40px}
+  .hdr-actions{gap:6px}
+  .hero-login{display:none} /* на телефоне «Войти» есть в шапке — в первом экране не дублируем */
   .cta-long,.nav-long{display:none}
   .cta-short,.nav-short{display:inline}
 
@@ -700,6 +703,19 @@ footer{background:var(--ink);color:rgba(242,245,244,.5)}
   .bar nav{justify-content:flex-start;gap:0 32px}
 }
 </style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112213015', 'ym');
+
+    ym(112213015, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112213015" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -731,7 +747,12 @@ footer{background:var(--ink);color:rgba(242,245,244,.5)}
       <a href="#panel">Панель</a>
       <a href="#price">Цены</a>
     </nav>
-    <a class="btn btn-green hdr-cta" href="https://panel.beneuro.ai/signup"><span class="cta-long">Начать →</span><span class="cta-short">Начать →</span></a>
+    <!-- Две кнопки вместо «Начать» (решение владельца 09.09.2026): зарегистрированный жмёт «Войти»
+         и попадает в свою панель (вход по нику через @beneuro_bot), новый — «Регистрация». -->
+    <div class="hdr-actions">
+      <a class="btn btn-line hdr-cta" href="https://panel.beneuro.ai/">Войти</a>
+      <a class="btn btn-green hdr-cta" href="https://panel.beneuro.ai/signup"><span class="cta-long">Регистрация →</span><span class="cta-short">Регистрация</span></a>
+    </div>
   </div>
 </header>
 
@@ -747,7 +768,8 @@ footer{background:var(--ink);color:rgba(242,245,244,.5)}
       <h1><span class="line">Сам находит клиентов</span> <span class="line">и пишет им <mark>первым</mark></span></h1>
       <p class="hero-lede">Читаем чаты, каналы и вакансии. Находим тех, кому прямо сейчас нужен ваш продукт или услуга, и готовим персональное первое сообщение каждому. Вы открываете панель и смотрите, кому написал наш агент.</p>
       <div class="btn-row">
-        <a class="btn btn-green" href="https://panel.beneuro.ai/signup">Начать →</a>
+        <a class="btn btn-green" href="https://panel.beneuro.ai/signup">Регистрация →</a>
+        <a class="btn btn-line hero-login" href="https://panel.beneuro.ai/">Войти</a>
         <a class="btn btn-line" href="https://demo.beneuro.ai"><span class="cta-long">Посмотреть панель</span><span class="cta-short">Панель</span></a>
       </div>
       <div class="metrics">
@@ -1164,7 +1186,8 @@ footer{background:var(--ink);color:rgba(242,245,244,.5)}
     <div class="cta-side">
       <p>Бот спросит, кто вы, кого берёте в клиенты и как разговариваете с людьми. Это минут двадцать. Дальше настройка и первые лиды — на нас.</p>
       <div class="btn-row">
-        <a class="btn btn-ink" href="https://panel.beneuro.ai/signup">Начать →</a>
+        <a class="btn btn-ink" href="https://panel.beneuro.ai/signup">Регистрация →</a>
+        <a class="btn btn-line-ink" href="https://panel.beneuro.ai/">Войти</a>
         <a class="btn btn-line-ink" href="https://t.me/keshapa">Задать вопрос живому человеку</a>
       </div>
     </div>
