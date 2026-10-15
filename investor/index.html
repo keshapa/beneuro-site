@@ -621,10 +621,18 @@
     });
     choose(initial);return choose;
   }
-  let currentDemo=0, timer=null;
+  let currentDemo=0,timer=null,demoPlaying=!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches,demoVisible=!('IntersectionObserver' in window);
   const chooseDemo=tabs('[data-step]',i=>{currentDemo=i;$('demo-title').innerHTML=demos[i][0];$('demo-panel').innerHTML=demos[i][1];$('demo-panel').setAttribute('aria-labelledby','demo-tab-'+i);});
-  function stopDemo(){clearInterval(timer);timer=null;$('demo-play').textContent='▶';$('demo-play').setAttribute('aria-pressed','false');$('demo-play').setAttribute('aria-label','Включить автоматический показ');}
-  $('demo-play').addEventListener('click',()=>{if(timer){stopDemo();return;}timer=setInterval(()=>{if(!document.hidden)chooseDemo((currentDemo+1)%demos.length);},5500);$('demo-play').textContent='Ⅱ';$('demo-play').setAttribute('aria-pressed','true');$('demo-play').setAttribute('aria-label','Остановить автоматический показ');});
+  function syncDemo(){
+    clearInterval(timer);timer=null;
+    $('demo-play').textContent=demoPlaying?'Ⅱ':'▶';$('demo-play').setAttribute('aria-pressed',String(demoPlaying));$('demo-play').setAttribute('aria-label',demoPlaying?'Остановить автоматический показ':'Включить автоматический показ');
+    if(demoPlaying&&demoVisible&&!document.hidden)timer=setInterval(()=>chooseDemo((currentDemo+1)%demos.length),4000);
+  }
+  function stopDemo(){demoPlaying=false;syncDemo();}
+  $('demo-play').addEventListener('click',()=>{demoPlaying=!demoPlaying;syncDemo();});
+  document.addEventListener('visibilitychange',syncDemo);
+  if('IntersectionObserver' in window)new IntersectionObserver(entries=>{demoVisible=entries[0].isIntersecting;syncDemo();},{threshold:.2}).observe($('top'));
+  syncDemo();
   document.querySelectorAll('[data-step]').forEach(b=>{b.addEventListener('click',stopDemo);b.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key))stopDemo();});});
   tabs('[data-card]',i=>{$('card-panel').innerHTML=cards[i];$('card-panel').setAttribute('aria-labelledby','card-tab-'+i);});
   tabs('[data-niche]',i=>{const n=niches[i];$('niche-panel').innerHTML=`<p class="eyebrow">${n[0]}</p><h3>${n[1]}</h3><p>${n[2]}</p><p><strong>Видимый запрос:</strong> ${n[3]}</p>`;$('niche-panel').setAttribute('aria-labelledby','niche-tab-'+i);});
