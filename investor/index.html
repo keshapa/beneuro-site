@@ -433,6 +433,40 @@
 #product .panel-style #card-panel .crm-message:has(.crm-checklist){padding-top:8px;padding-bottom:8px}
 @media(min-width:801px) and (max-height:650px){#product .panel-style #card-panel{height:245px;min-height:245px;max-height:245px}}
 @media(max-width:800px){#product .panel-style #card-panel{height:300px;min-height:300px;max-height:300px}}
+
+/* Review pass: restore a calm vertical rhythm without changing card contents. */
+@media screen{
+  :root{--section-space:clamp(64px,6vw,88px)}
+  #problem,#product,#product-tour,#pricing,#economics,#market,#comparison,#roadmap,#investment{padding-block:var(--section-space)}
+  .nature-manifesto{min-height:0;padding-block:64px}
+  .section:not(#value)>.eyebrow,.section:not(#value)>.wrap>.eyebrow{margin-bottom:24px}
+  #problem .problem-rows{margin-top:34px}
+  #problem .problem-rows article{padding-block:20px}
+  #product-tour .tour-tabs{margin-top:34px}
+  #pricing .pricing-grid{margin-top:34px}
+  #pricing .pricing-conversions{margin-top:30px;padding-top:26px}
+  #economics .money-grid{margin:36px 0 42px}
+  #economics .calculation-details,#economics .subscription-details{margin-top:28px}
+  #market .market-grid{margin-top:36px;margin-bottom:34px}
+  #market .market-method{margin-top:34px}
+  #comparison .competitor-tabs{margin-top:30px}
+  #roadmap .month-track{margin-top:36px;margin-bottom:12px}
+  #investment .investment-goal{margin-top:32px}
+  #investment .finance-details{margin-top:40px!important}
+}
+@media screen and (max-width:800px){
+  :root{--section-space:48px}
+  .nature-manifesto{padding-block:44px}
+  .section:not(#value)>.eyebrow,.section:not(#value)>.wrap>.eyebrow{margin-bottom:20px}
+  #problem .problem-rows{margin-top:28px}
+  #problem .problem-rows article{padding-block:22px}
+  #product-tour .tour-tabs,#pricing .pricing-grid{margin-top:28px}
+  #pricing .pricing-conversions{margin-top:24px;padding-top:22px}
+  #economics .money-grid{margin:28px 0 32px}
+  #market .market-grid{margin-top:28px;margin-bottom:28px}
+  #roadmap .month-track{margin-top:28px}
+  #investment .finance-details{margin-top:30px!important}
+}
 </style><meta name="robots" content="noindex, nofollow, noarchive">
 </head>
 <body>
@@ -441,7 +475,7 @@
 
 <main id="main">
 <section class="hero wrap" id="top" aria-labelledby="hero-title">
-<div class="hero-copy"><h1 id="hero-title" data-edit="hero-title">Beneuro — кто это?</h1><p class="lead" data-edit="hero-desc">Представьте сотрудника, которому поручили поиск клиентов — это и есть Beneuro, только в формате ИИ-сотрудника.</p><a class="button" href="https://beneuro.ai/" target="_blank" rel="noopener">Перейти на beneuro.ai <span aria-hidden="true">↗</span></a></div>
+<div class="hero-copy"><h1 id="hero-title" data-edit="hero-title">Beneuro - это?</h1><p class="lead" data-edit="hero-desc">Представьте сотрудника, которому поручили поиск клиентов — это и есть Beneuro, только в формате ИИ-сотрудника.</p><a class="button" href="https://beneuro.ai/" target="_blank" rel="noopener">Перейти на beneuro.ai <span aria-hidden="true">↗</span></a></div>
 <div class="scene hero-scene"><div class="scene-heading"><span class="eyebrow">Beneuro / как работает агент</span><h2 id="demo-title">Находит клиента</h2></div><div id="demo-panel" class="demo-panel" role="tabpanel" aria-labelledby="demo-tab-0" tabindex="0"></div><div class="scene-controls"><div class="demo-tabs" role="tablist" aria-label="Этапы работы Beneuro"><button id="demo-tab-0" role="tab" aria-selected="true" aria-controls="demo-panel" data-step="0">Находит клиента</button><button id="demo-tab-1" role="tab" aria-selected="false" aria-controls="demo-panel" data-step="1" tabindex="-1">Изучает его</button><button id="demo-tab-2" role="tab" aria-selected="false" aria-controls="demo-panel" data-step="2" tabindex="-1">Находит контакт</button><button id="demo-tab-3" role="tab" aria-selected="false" aria-controls="demo-panel" data-step="3" tabindex="-1">Отправляет сообщение</button></div><button id="demo-play" aria-label="Включить автоматический показ" aria-pressed="false">▶</button></div><p class="scene-caption">Кейс Deneyro · август 2026 · представление по данным истории</p></div>
 </section>
 <section class="section wrap" id="problem"><div class="section-intro"><p class="eyebrow">01 / Проблемы и решения</p><h2 data-edit="problem-title">Какие проблемы решает Beneuro?</h2></div><div class="problem-rows"><article><span class="row-number">01</span><div><h3 data-edit="problem-1">Нехватка каналов продаж</h3><p data-edit="problem-1-desc">Продвижение через привычные зарубежные платформы, включая Instagram, ограничено. Бизнесу в России приходится искать новые пути к аудитории.</p></div><div class="answer"><span>Что делает Beneuro</span><p data-edit="answer-1">Ищет конкретные запросы в профессиональных сообществах и объявлениях.</p></div></article><article><span class="row-number">02</span><div><h3 data-edit="problem-2">Показ рекламы — ещё не потребность</h3><p data-edit="problem-2-desc">Таргетированная реклама может попасть в интересы человека, но ваша услуга ему не нужна прямо сейчас.</p></div><div class="answer"><span>Что делает Beneuro</span><p data-edit="answer-2">Находит повод для разговора и связывает предложение с задачей человека.</p></div></article><article><span class="row-number">03</span><div><h3 data-edit="problem-3">Ручной поиск отвлекает от основной работы</h3><p data-edit="problem-3-desc">Когда нет бюджета на рекламу или найм, предприниматель ищет клиентов сам — урывками, без системы и в ущерб основной работе.</p></div><div class="answer"><span>Что делает Beneuro</span><p data-edit="answer-3">Запускает поиск и первые обращения за 10 000 ₽/мес. Это 1/10 зарплаты сотрудника в сценарии со ставкой 100 000 ₽/мес.</p></div></article><article><span class="row-number">04</span><div><h3 data-edit="problem-4">Массовые рассылки портят имидж</h3><p data-edit="problem-4-desc">Одинаковые сообщения по базе могут приходить людям без актуального запроса. Нерелевантные обращения раздражают получателей.</p></div><div class="answer"><span>Что делает Beneuro</span><p data-edit="answer-4">Отбирает людей по признакам потребности и готовит каждому индивидуальное сообщение под его задачу.</p></div></article><article><span class="row-number">05</span><div><h3 data-edit="problem-5">Содержать отдел продаж дорого</h3><p data-edit="problem-5-desc">Найм и содержание целого отдела продаж требуют значительного фонда оплаты труда — даже если у компании есть средства.</p></div><div class="answer"><span>Что делает Beneuro</span><p data-edit="answer-5">Берёт на себя поиск, анализ и подготовку первых обращений, помогая экономить время команды и расходы на эти задачи.</p></div></article></div></section>
