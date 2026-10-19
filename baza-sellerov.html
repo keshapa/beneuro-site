@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>База селлеров маркетплейсов: как проверить перед работой</title>
+<meta name="description" content="Какие поля нужны в базе селлеров, как проверить магазин, контакт, актуальность и дубли. Практический разбор образца перед использованием.">
+<link rel="canonical" href="https://beneuro.ai/baza-sellerov">
+<link rel="icon" href="beneuro-favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="beneuro-icon-180.png">
+<meta property="og:title" content="База селлеров маркетплейсов: как проверить перед работой">
+<meta property="og:description" content="Какие поля нужны в базе селлеров, как проверить магазин, контакт, актуальность и дубли. Практический разбор образца перед использованием.">
+<meta property="og:image" content="https://beneuro.ai/beneuro-avatar-word-2048.png">
+<meta property="og:url" content="https://beneuro.ai/baza-sellerov">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ru_RU">
+<!-- FAQ в разметке обязан слово в слово повторять видимый блок ниже — править синхронно. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "База селлеров маркетплейсов: как проверить перед работой",
+      "description": "Какие поля нужны в базе селлеров, как проверить магазин, контакт, актуальность и дубли. Практический разбор образца перед использованием.",
+      "datePublished": "2026-10-19",
+      "dateModified": "2026-10-19",
+      "author": {
+        "@type": "Person",
+        "name": "Игорь Пичугин",
+        "url": "https://vc.ru/id6098303"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Beneuro",
+        "url": "https://beneuro.ai/"
+      },
+      "mainEntityOfPage": "https://beneuro.ai/baza-sellerov",
+      "image": "https://beneuro.ai/beneuro-avatar-word-2048.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beneuro",
+          "item": "https://beneuro.ai/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Статьи",
+          "item": "https://beneuro.ai/stati"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "База селлеров маркетплейсов: как проверить перед работой",
+          "item": "https://beneuro.ai/baza-sellerov"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что считать одной записью в базе селлеров?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Это нужно определить заранее: магазин, компания или человек. Эти единицы не совпадают автоматически; число строк без пояснения не показывает количество уникальных подходящих компаний."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ссылка на магазин подтверждает роль контакта?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Она подтверждает существование или доступность страницы магазина. Связь человека с компанией и его роль требуют отдельного основания."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Дата выгрузки означает, что контакты свежие?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Нужны дата и основание последней проверки важных полей. Создание нового файла может не сопровождаться перепроверкой старых записей."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли считать всю базу качественной по хорошему образцу?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Проверка описывает выбранный образец. Его состав и способ выбора нужно сохранить; автоматически переносить оценку на весь файл нельзя."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "База селлеров и готовые лиды — одно и то же?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нет. Список может подтверждать существование бизнеса, но не его текущую потребность в вашей услуге. Источник задачи и допустимый способ обращения проверяются отдельно."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+@font-face{font-family:Onest;font-weight:300 700;font-display:swap;
+  src:url(fonts/onest-cyrillic.woff2) format('woff2');
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-weight:300 700;font-display:swap;
+  src:url(fonts/onest-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"JetBrains Mono";font-weight:400 500;font-display:swap;
+  src:url(fonts/jetbrainsmono-cyrillic.woff2) format('woff2');
+  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"JetBrains Mono";font-weight:400 500;font-display:swap;
+  src:url(fonts/jetbrainsmono-latin.woff2) format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --ink:#10131a; --paper:#f1f4f3; --tod:#f2f5f4;
+  --green:#30be86; --green-hover:#3ed699; --green-dark:#167a55;
+  --card:#ffffff; --tint-dark:#13211d;
+  --line-dark:rgba(242,245,244,.11); --line-light:rgba(16,19,26,.1);
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:Onest,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+
+header{position:sticky;top:0;z-index:50;background:rgba(16,15,13,.82);color:var(--tod);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(242,245,244,.09)}
+.bar{display:flex;align-items:center;gap:16px 28px;min-height:64px;
+  max-width:1200px;margin:0 auto;padding:12px 24px}
+.brand{display:flex;align-items:center;gap:10px;flex:none;text-decoration:none}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}
+.logo{display:block;height:20px;color:var(--tod)}
+.logo svg{height:100%;width:auto;display:block}
+.bar nav{margin-left:auto;display:flex;gap:20px;font-size:14.5px;color:rgba(242,245,244,.62)}
+.bar nav a{text-decoration:none}
+.bar nav a:hover{color:var(--green)}
+.hdr-cta{background:var(--green);color:var(--ink);font-weight:600;text-decoration:none;
+  padding:10px 18px;border-radius:999px;font-size:14.5px;white-space:nowrap}
+.hdr-cta:hover{background:var(--green-hover)}
+
+.crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(16,19,26,.45);margin:40px 0 20px}
+.crumbs a{text-decoration:none;color:inherit}
+.crumbs a:hover{color:var(--green-dark)}
+
+h1{font-size:clamp(30px,4.6vw,44px);line-height:1.08;letter-spacing:-.03em;font-weight:500;
+  margin:0 0 18px;text-wrap:balance}
+.lede{font-size:18.5px;line-height:1.6;color:rgba(16,19,26,.62);margin:0 0 40px;text-wrap:pretty}
+h2{font-size:clamp(23px,3vw,29px);line-height:1.15;letter-spacing:-.02em;font-weight:500;
+  margin:52px 0 16px;text-wrap:balance}
+h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:28px 0 10px}
+p{margin:0 0 16px}
+article a{color:var(--green-dark);text-decoration-color:rgba(22,122,85,.4)}
+article a:hover{text-decoration-color:var(--green-dark)}
+ul{margin:0 0 16px;padding-left:22px}
+li{margin-bottom:8px}
+li::marker{color:var(--green-dark)}
+
+.signal{background:var(--card);border:1px solid var(--line-light);border-radius:12px;
+  padding:22px 24px;margin:0 0 14px}
+.signal .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green-dark);margin-bottom:10px}
+.signal p{margin:0;color:rgba(16,19,26,.72)}
+.signal p b{color:var(--ink)}
+
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:28px 0}
+.vs > div{border-radius:12px;padding:22px 24px}
+.vs .bad{background:#e4e8e6;opacity:.85}
+.vs .bad p{margin:0;font-size:15.5px;color:rgba(16,19,26,.55);
+  text-decoration-line:line-through;text-decoration-color:rgba(16,19,26,.2)}
+.vs .good{background:var(--ink);color:var(--tod)}
+.vs .good p{margin:0;font-size:15.5px}
+.vs .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:14px;color:rgba(16,19,26,.45)}
+.vs .good .tag{color:var(--green)}
+
+.faq{margin:8px 0 0}
+.faq details{border-top:1px solid rgba(16,19,26,.12)}
+.faq details:last-child{border-bottom:1px solid rgba(16,19,26,.12)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
+  align-items:baseline;gap:24px;padding:20px 0;font-size:18px;font-weight:600;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--green-dark);flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq .faq-a{padding:0 0 24px;color:rgba(16,19,26,.62);max-width:640px;text-wrap:pretty}
+
+.cta{background:var(--ink);color:var(--tod);border-radius:16px;padding:36px;margin:56px 0}
+.cta h2{margin:0 0 12px}
+.cta p{color:rgba(242,245,244,.62);max-width:520px}
+.btn{display:inline-flex;align-items:center;font:inherit;font-size:16px;font-weight:600;
+  padding:15px 26px;border-radius:999px;text-decoration:none;margin-top:8px;
+  background:var(--green);color:var(--ink)}
+.btn:hover{background:var(--green-hover)}
+.btn-line{background:none;border:1px solid rgba(242,245,244,.22);color:var(--tod);
+  font-weight:400;margin-left:10px}
+.btn-line:hover{border-color:var(--green);color:var(--green);background:none}
+
+footer{background:var(--ink);color:rgba(242,245,244,.5);margin-top:72px}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;font-size:14.5px;
+  max-width:1200px;margin:0 auto;padding:32px 24px}
+.foot .logo{height:15px;opacity:.6}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--green)}
+.foot .sp{margin-left:auto}
+
+@media (max-width:640px){
+  .bar nav{display:none}
+  .cta{padding:26px 22px}
+  .btn-line{margin-left:0;margin-top:12px}
+  .faq summary{font-size:16.5px;padding:17px 0;gap:16px}
+}
+</style>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112213015', 'ym');
+
+    ym(112213015, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112213015" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="/" aria-label="Beneuro">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.9 73.6" role="img" aria-label="Beneuro"> <g transform="translate(-6.900 72.000) scale(0.05 -0.05)"><path fill="currentColor" d="M670 -30Q509 -30 401 45Q293 120 238.5 249Q184 378 184 540Q184 702 238 831Q292 960 397 1035Q502 1110 656 1110Q811 1110 926 1036Q1041 962 1104.5 833.5Q1168 705 1168 540Q1168 378 1105.5 249Q1043 120 931 45Q819 -30 670 -30ZM138 0L138 1440L412 1440L412 740L378 740L378 0ZM626 212Q714 212 770 256Q826 300 853 374.5Q880 449 880 540Q880 630 852 704.5Q824 779 765.5 823.5Q707 868 616 868Q531 868 478.5 827Q426 786 402 712Q378 638 378 540Q378 442 402 368Q426 294 480.5 253Q535 212 626 212Z M1834 -30Q1668 -30 1541.5 41.5Q1415 113 1343.5 238.5Q1272 364 1272 526Q1272 703 1342 834Q1412 965 1535 1037.5Q1658 1110 1818 1110Q1988 1110 2107 1030Q2226 950 2283 805Q2340 660 2323 464L2054 464L2054 564Q2054 729 2001.5 801.5Q1949 874 1830 874Q1691 874 1625.5 789.5Q1560 705 1560 540Q1560 389 1625.5 306.5Q1691 224 1818 224Q1898 224 1955 259Q2012 294 2042 360L2314 282Q2253 134 2121.5 52Q1990 -30 1834 -30ZM1476 464L1476 666L2192 666L2192 464Z M3198 0L3198 510Q3198 547 3194 604.5Q3190 662 3169 720Q3148 778 3100.5 817Q3053 856 2966 856Q2931 856 2891 845Q2851 834 2816 802.5Q2781 771 2758.5 710Q2736 649 2736 548L2580 622Q2580 750 2632 862Q2684 974 2788.5 1043Q2893 1112 3052 1112Q3179 1112 3259 1069Q3339 1026 3383.5 960Q3428 894 3447 822.5Q3466 751 3470 692Q3474 633 3474 606L3474 0ZM2460 0L2460 1080L2702 1080L2702 722L2736 722L2736 0Z M4160 -30Q3994 -30 3867.5 41.5Q3741 113 3669.5 238.5Q3598 364 3598 526Q3598 703 3668 834Q3738 965 3861 1037.5Q3984 1110 4144 1110Q4314 1110 4433 1030Q4552 950 4609 805Q4666 660 4649 464L4380 464L4380 564Q4380 729 4327.5 801.5Q4275 874 4156 874Q4017 874 3951.5 789.5Q3886 705 3886 540Q3886 389 3951.5 306.5Q4017 224 4144 224Q4224 224 4281 259Q4338 294 4368 360L4640 282Q4579 134 4447.5 52Q4316 -30 4160 -30ZM3802 464L3802 666L4518 666L4518 464Z M5220 -32Q5093 -32 5013 11Q4933 54 4888.5 120Q4844 186 4825 257.5Q4806 329 4802 388Q4798 447 4798 474L4798 1080L5074 1080L5074 570Q5074 533 5078 475.5Q5082 418 5103 360Q5124 302 5171.5 263Q5219 224 5306 224Q5341 224 5381 235Q5421 246 5456 277.5Q5491 309 5513.5 370.5Q5536 432 5536 532L5692 458Q5692 330 5640 218Q5588 106 5483.5 37Q5379 -32 5220 -32ZM5570 0L5570 358L5536 358L5536 1080L5810 1080L5810 0Z M6034 0L6034 1080L6274 1080L6274 816L6248 850Q6269 906 6304 952Q6339 998 6390 1028Q6429 1052 6475 1065.5Q6521 1079 6570 1082.5Q6619 1086 6668 1080L6668 826Q6623 840 6563.5 835.5Q6504 831 6456 808Q6408 786 6375 749.5Q6342 713 6325 663.5Q6308 614 6308 552L6308 0Z M7268 -30Q7105 -30 6982 43Q6859 116 6790.5 244.5Q6722 373 6722 540Q6722 709 6792 837.5Q6862 966 6985 1038Q7108 1110 7268 1110Q7431 1110 7554.5 1037Q7678 964 7747 835.5Q7816 707 7816 540Q7816 372 7746.5 243.5Q7677 115 7553.5 42.5Q7430 -30 7268 -30ZM7268 224Q7399 224 7463.5 312.5Q7528 401 7528 540Q7528 684 7462.5 770Q7397 856 7268 856Q7179 856 7122 816Q7065 776 7037.5 705Q7010 634 7010 540Q7010 395 7075.5 309.5Q7141 224 7268 224Z"/></g> </svg></span>
+    </a>
+    <nav>
+      <a href="/#how">Как работает</a>
+      <a href="/#numbers">Цифры</a>
+      <a href="/#price">Цены</a>
+    </nav>
+    <a class="hdr-cta" href="https://t.me/beneuro_bot">Начать в Telegram →</a>
+  </div>
+</header>
+
+<main class="wrap">
+<article>
+  <div class="crumbs"><a href="/">Beneuro</a> / <a href="/stati">Статьи</a></div>
+  <h1>База селлеров маркетплейсов: как проверить перед работой</h1>
+  <p class="lede">База селлеров помогает составить список компаний для изучения. Чтобы превратить её в рабочий инструмент, нужно проверить связь магазина с контактом, актуальность данных и соответствие вашей услуге. Ниже — порядок проверки образца и правила приёмки, которые можно использовать до загрузки списка в работу.</p>
+  <p>Игорь Пичугин · 19 октября 2026 г.</p>
+  <section>
+    <h2>Что должно входить в базу селлеров?</h2>
+    <p>Для первичной проверки нужны ссылка или идентификатор магазина на площадке, название, доступные сведения о компании, источник контакта и дата проверки. Отдельно храните, почему запись подходит вашей услуге. Пустое поле лучше явно отметить неизвестным, чем заполнять предположением.</p>
+    <p>Слово «селлер» в описании аккаунта не подтверждает управление конкретным магазином. В одном списке могут оказаться продавец, менеджер, агентство и человек, который только собирается выйти на площадку. Для разных услуг это разные адресаты, даже если у всех встречается название маркетплейса.</p>
+    <p>Сразу договоритесь, что означает одна строка: магазин, юридическое лицо, бренд или человек. У компании может быть несколько магазинов, а у одного контакта — несколько проектов. Без выбранной единицы учёта число строк трудно сопоставить с объёмом реальной работы.</p>
+  </section>
+  <section>
+    <h2>Как проверять связь контакта с магазином?</h2>
+    <p>Ищите подтверждение связи в доступном источнике, а не только совпадение имени или похожий логотип. Например, ссылка на магазин может быть опубликована самим представителем компании. Если подтверждения нет, связь остаётся гипотезой и требует уточнения.</p>
+    <p>Разделите два вопроса: существует ли магазин и относится ли к нему указанный человек. Рабочая ссылка на карточку продавца отвечает только на первый. Имя в Telegram или телефон в файле сами по себе не доказывают ни роль человека, ни его полномочия выбирать подрядчика.</p>
+    <p>Условный пример: в таблице магазин «Север», контакт Анна и пометка «владелец». Ссылка на магазин открывается, но источник роли не указан. При приёмке можно подтвердить магазин, а поля «связь с компанией» и «роль» оставить непроверенными. Это пример разбора, а не сведения о реальном бизнесе.</p>
+  </section>
+  <section>
+    <h2>Как понять, актуальны ли данные в базе?</h2>
+    <p>Проверяйте дату и основание проверки по каждому важному полю. Дата выгрузки файла не равна дате последнего подтверждения контакта. Полезно отдельно знать, когда проверяли магазин, роль человека и сам повод для обращения.</p>
+    <p>В образце откройте исходные ссылки: относятся ли они к той же компании, доступны ли сведения, не изменился ли смысл записи. Если ссылка перестала работать, не достраивайте подтверждение по памяти. Отметьте, что именно сейчас проверить не удалось.</p>
+    <p>Фраза «база обновляется ежедневно» без описания обновлений мало помогает при приёмке. Уточните, добавляются ли только новые строки или перепроверяются старые, как отражаются изменения и что происходит с записью, которую больше нельзя подтвердить.</p>
+  </section>
+  <section>
+    <h2>Как проверить базу на соответствие своей услуге?</h2>
+    <p>До просмотра списка задайте признаки подходящего клиента и причины исключения. Для предметного фотографа важна задача съёмки, для бухгалтера — состав учёта, для агентства — формат сопровождения. Само присутствие магазина на площадке не подтверждает ни одну из этих задач.</p>
+    <p>Условный запрос «нужны фотографии новой коллекции» может подходить фотографу, но не доказывает потребность в полном ведении кабинета. Объявление о поиске штатного менеджера также не означает готовность привлечь агентство. Оценку нужно связывать с содержанием запроса.</p>
+    <p>Используйте три отдельные отметки: бизнес подходит по профилю, задача подтверждена, допустимый способ отклика известен. Так список компаний не будет выглядеть как готовая очередь предложений, если на деле подтверждён только профиль бизнеса.</p>
+  </section>
+  <section>
+    <h2>Как выявлять дубли и прежние обращения?</h2>
+    <p>Проверяйте повторы отдельно по магазину, компании и адресу контакта. Сохраните исходный идентификатор площадки, если он есть, и правила сопоставления. Одного похожего названия недостаточно, чтобы автоматически объединять разные бизнесы.</p>
+    <p>Перед импортом сравните записи с собственной историей. Уже знакомый контакт не становится новым из-за другой ссылки на источник. Отказ, действующий разговор и запрет на повторное обращение должны сохраняться независимо от того, какой файл принёс ту же запись.</p>
+    <p>Попросите объяснить, как поставщик считает уникальность. Формулировки «без повторяющихся телефонов» и «без повторяющихся компаний» описывают разные проверки. Не обещайте команде определённое число новых компаний, пока не выбрана и не проверена единица учёта.</p>
+  </section>
+  <section>
+    <h2>Как принимать образец базы без самообмана?</h2>
+    <p>Возьмите заранее описанную часть выгрузки и проверьте её по одинаковым критериям: магазин, связь контакта, дата, соответствие услуге, дубли и доступность источника. Сохраняйте результат по каждому критерию, а не только общую оценку «нравится».</p>
+    <p>Условный образец из 20 строк можно разнести по статусам: подтверждённые, требующие уточнения, повторные, не подходящие по профилю. Для проверки связи и актуальности заведите отдельные поля: одна строка может одновременно иметь несколько проблем. Не складывайте пересекающиеся категории как независимые части.</p>
+    <p>Проверка образца описывает проверенные записи, а не гарантирует качество всего файла. Если образец выбран продавцом вручную, это особенно важно отразить. Согласуйте, какие поля обязательны и как исправляются ошибки, до передачи списка в рабочий процесс.</p>
+  </section>
+  <section>
+    <h2>Что делать с базой после проверки?</h2>
+    <p>Используйте подтверждённые записи как основу исследования и работы с подходящими задачами. При наличии контакта всё равно нужно выяснить уместный канал и повод обращения. В <a href="https://telegram.org/faq_spam">Spam FAQ Telegram</a> рекомендуется связываться с людьми, которые ожидают сообщения; открытый username эту проверку не заменяет.</p>
+    <p>В Beneuro поиск строится вокруг сигнала потребности, проверки компании и подготовки персонального текста. База магазинов может дать контекст, но без источника задачи не стоит выдавать её строки за подтверждённый спрос. Отдельно учитывайте найденные записи, отправленные обращения и результаты разговоров.</p>
+    <p>Разницу форматов разбирает <a href="/kupit-lidy">статья о покупке лидов</a>, проверку выводов — <a href="/nejroset-dlya-poiska-klientov">материал о нейросети для поиска клиентов</a>, а правила измерения результата — <a href="/reply-rate-v-b2b">разбор доли ответов</a>. Приёмка базы заканчивается понятными статусами, а не обещанием продать каждому магазину.</p>
+  </section>
+  <section><h2>Какие вопросы стоит уточнить перед началом?</h2>
+  <div class="faq">
+    <details><summary>Что считать одной записью в базе селлеров?</summary><p class="faq-a">Это нужно определить заранее: магазин, компания или человек. Эти единицы не совпадают автоматически; число строк без пояснения не показывает количество уникальных подходящих компаний.</p></details>
+    <details><summary>Ссылка на магазин подтверждает роль контакта?</summary><p class="faq-a">Нет. Она подтверждает существование или доступность страницы магазина. Связь человека с компанией и его роль требуют отдельного основания.</p></details>
+    <details><summary>Дата выгрузки означает, что контакты свежие?</summary><p class="faq-a">Нет. Нужны дата и основание последней проверки важных полей. Создание нового файла может не сопровождаться перепроверкой старых записей.</p></details>
+    <details><summary>Можно ли считать всю базу качественной по хорошему образцу?</summary><p class="faq-a">Проверка описывает выбранный образец. Его состав и способ выбора нужно сохранить; автоматически переносить оценку на весь файл нельзя.</p></details>
+    <details><summary>База селлеров и готовые лиды — одно и то же?</summary><p class="faq-a">Нет. Список может подтверждать существование бизнеса, но не его текущую потребность в вашей услуге. Источник задачи и допустимый способ обращения проверяются отдельно.</p></details>
+  </div></section>
+  <div class="cta"><h2>Какие сведения должны быть видны в карточке потенциального клиента?</h2><p>Посмотрите демо-панель Beneuro и сравните состав карточки с теми данными, которые нужны для работы вашей команды.</p><a class="btn" href="https://demo.beneuro.ai">Посмотреть демо-панель</a></div>
+</article>
+</main>
+
+<footer>
+  <div class="foot">
+    <a class="brand" href="/" aria-label="Beneuro"><span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.9 73.6" role="img" aria-label="Beneuro"> <g transform="translate(-6.900 72.000) scale(0.05 -0.05)"><path fill="currentColor" d="M670 -30Q509 -30 401 45Q293 120 238.5 249Q184 378 184 540Q184 702 238 831Q292 960 397 1035Q502 1110 656 1110Q811 1110 926 1036Q1041 962 1104.5 833.5Q1168 705 1168 540Q1168 378 1105.5 249Q1043 120 931 45Q819 -30 670 -30ZM138 0L138 1440L412 1440L412 740L378 740L378 0ZM626 212Q714 212 770 256Q826 300 853 374.5Q880 449 880 540Q880 630 852 704.5Q824 779 765.5 823.5Q707 868 616 868Q531 868 478.5 827Q426 786 402 712Q378 638 378 540Q378 442 402 368Q426 294 480.5 253Q535 212 626 212Z M1834 -30Q1668 -30 1541.5 41.5Q1415 113 1343.5 238.5Q1272 364 1272 526Q1272 703 1342 834Q1412 965 1535 1037.5Q1658 1110 1818 1110Q1988 1110 2107 1030Q2226 950 2283 805Q2340 660 2323 464L2054 464L2054 564Q2054 729 2001.5 801.5Q1949 874 1830 874Q1691 874 1625.5 789.5Q1560 705 1560 540Q1560 389 1625.5 306.5Q1691 224 1818 224Q1898 224 1955 259Q2012 294 2042 360L2314 282Q2253 134 2121.5 52Q1990 -30 1834 -30ZM1476 464L1476 666L2192 666L2192 464Z M3198 0L3198 510Q3198 547 3194 604.5Q3190 662 3169 720Q3148 778 3100.5 817Q3053 856 2966 856Q2931 856 2891 845Q2851 834 2816 802.5Q2781 771 2758.5 710Q2736 649 2736 548L2580 622Q2580 750 2632 862Q2684 974 2788.5 1043Q2893 1112 3052 1112Q3179 1112 3259 1069Q3339 1026 3383.5 960Q3428 894 3447 822.5Q3466 751 3470 692Q3474 633 3474 606L3474 0ZM2460 0L2460 1080L2702 1080L2702 722L2736 722L2736 0Z M4160 -30Q3994 -30 3867.5 41.5Q3741 113 3669.5 238.5Q3598 364 3598 526Q3598 703 3668 834Q3738 965 3861 1037.5Q3984 1110 4144 1110Q4314 1110 4433 1030Q4552 950 4609 805Q4666 660 4649 464L4380 464L4380 564Q4380 729 4327.5 801.5Q4275 874 4156 874Q4017 874 3951.5 789.5Q3886 705 3886 540Q3886 389 3951.5 306.5Q4017 224 4144 224Q4224 224 4281 259Q4338 294 4368 360L4640 282Q4579 134 4447.5 52Q4316 -30 4160 -30ZM3802 464L3802 666L4518 666L4518 464Z M5220 -32Q5093 -32 5013 11Q4933 54 4888.5 120Q4844 186 4825 257.5Q4806 329 4802 388Q4798 447 4798 474L4798 1080L5074 1080L5074 570Q5074 533 5078 475.5Q5082 418 5103 360Q5124 302 5171.5 263Q5219 224 5306 224Q5341 224 5381 235Q5421 246 5456 277.5Q5491 309 5513.5 370.5Q5536 432 5536 532L5692 458Q5692 330 5640 218Q5588 106 5483.5 37Q5379 -32 5220 -32ZM5570 0L5570 358L5536 358L5536 1080L5810 1080L5810 0Z M6034 0L6034 1080L6274 1080L6274 816L6248 850Q6269 906 6304 952Q6339 998 6390 1028Q6429 1052 6475 1065.5Q6521 1079 6570 1082.5Q6619 1086 6668 1080L6668 826Q6623 840 6563.5 835.5Q6504 831 6456 808Q6408 786 6375 749.5Q6342 713 6325 663.5Q6308 614 6308 552L6308 0Z M7268 -30Q7105 -30 6982 43Q6859 116 6790.5 244.5Q6722 373 6722 540Q6722 709 6792 837.5Q6862 966 6985 1038Q7108 1110 7268 1110Q7431 1110 7554.5 1037Q7678 964 7747 835.5Q7816 707 7816 540Q7816 372 7746.5 243.5Q7677 115 7553.5 42.5Q7430 -30 7268 -30ZM7268 224Q7399 224 7463.5 312.5Q7528 401 7528 540Q7528 684 7462.5 770Q7397 856 7268 856Q7179 856 7122 816Q7065 776 7037.5 705Q7010 634 7010 540Q7010 395 7075.5 309.5Q7141 224 7268 224Z"/></g> </svg></span></a>
+    <span>© 2026</span>
+    <span><a href="/stati">Статьи</a></span>
+    <span class="sp"><a href="https://t.me/beneuro_bot">Telegram-бот</a></span>
+    <span><a href="/requisites">Реквизиты и оферта</a></span>
+    <span><a href="https://t.me/keshapa">Связаться</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
