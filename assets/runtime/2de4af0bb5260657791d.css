@@ -1,0 +1,5 @@
+/* Одна компактная шапка для всех страниц макета. */
+:root{--site-header-height:64px}html,html:has(.niche-page){scroll-padding-top:calc(var(--site-header-height) + 12px)}
+.header{height:var(--site-header-height);gap:24px}.header .brand img{width:132px}.header nav{gap:25px}.header nav a{position:relative;padding-block:20px}.header nav a[aria-current="page"]{color:var(--green)}.header nav a[aria-current="page"]:after{content:"";height:2px;position:absolute;bottom:12px;left:0;right:0;background:var(--brand)}.mobile-nav{top:var(--site-header-height)}.mobile-nav a[aria-current="page"]{color:#17875c;font-weight:600}.niche-page{--header-height:var(--site-header-height)}
+@media(max-width:900px){.header nav{display:none}.header-login{margin-left:auto;padding-left:0;border:0}.menu-button{display:flex;align-items:center;gap:10px;padding:8px 0 8px 16px;border-left:1px solid var(--line)}}
+@media(max-width:560px){:root{--site-header-height:56px}.header{height:var(--site-header-height);gap:15px}.header .brand img{width:112px}.mobile-nav{top:var(--site-header-height)}}
