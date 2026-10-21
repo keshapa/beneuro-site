@@ -69,125 +69,20 @@
   ]
 }
 </script>
-<style>
-@font-face{font-family:Onest;font-weight:300 700;font-display:swap;
-  src:url(fonts/onest-cyrillic.woff2) format('woff2');
-  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Onest;font-weight:300 700;font-display:swap;
-  src:url(fonts/onest-latin.woff2) format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:"JetBrains Mono";font-weight:400 500;font-display:swap;
-  src:url(fonts/jetbrainsmono-cyrillic.woff2) format('woff2');
-  unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:"JetBrains Mono";font-weight:400 500;font-display:swap;
-  src:url(fonts/jetbrainsmono-latin.woff2) format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+<style>@font-face{font-family:Manrope;src:url('assets/customer-articles/Manrope.ttf');font-weight:200 800;font-display:swap}@font-face{font-family:Golos;src:url('assets/customer-articles/Golos.ttf');font-weight:400 900;font-display:swap}
+:root{--paper:#f8f9f7;--panel:#fcfdf7;--ink:#19282e;--body:#40525c;--muted:#65766f;--green:#264842;--line:#d9e0da;--brand:#2fbf86;--dark:#1c3036;--soft:#edf1e9}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:var(--paper);color:var(--body);font:17px/1.55 Golos,sans-serif;-webkit-font-smoothing:antialiased}body.dialog-open{overflow:hidden}h1,h2,h3,h4,p{margin:0}h1,h2,h3,h4{font-family:Manrope,sans-serif;color:var(--ink);font-weight:500}h1{font-size:clamp(52px,5.1vw,76px);letter-spacing:-.055em;line-height:1.03}h2{font-size:clamp(36px,3.3vw,50px);letter-spacing:-.045em;line-height:1.15}h2 em{font-style:normal;color:var(--green)}h3{font-size:22px;line-height:1.3;letter-spacing:-.025em}a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit}button,a,input,summary{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid #2c7c5d;outline-offset:5px}button{border:0}button:disabled{cursor:default}svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}img{max-width:100%}.wrap{width:min(1320px,calc(100% - 104px));margin-inline:auto}.section{padding-block:88px}.eyebrow,.small-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;line-height:1.5;color:var(--muted)}.eyebrow{margin-bottom:22px}.small-label{display:block}.status-dot{display:inline-block;vertical-align:middle;width:6px;height:6px;background:var(--brand);border-radius:50%;margin-right:8px}.header{height:88px;padding:0 52px;border-bottom:1px solid #d9e0da99;display:flex;align-items:center;gap:32px;background:#f8f9f7ed;backdrop-filter:blur(14px);position:sticky;top:0;z-index:20}.brand{display:flex;align-items:center}.brand img{display:block;height:auto}.header nav{display:flex;gap:28px;font-size:13px;margin-inline:auto}.header nav a:hover,.text-link:hover,.text-button:hover{color:#217253}.header-login{font-size:13px;padding:10px 0 10px 20px;border-left:1px solid var(--line)}.header-login span{margin-left:18px}.menu-button{display:none;background:transparent;font-size:13px}.mobile-nav{position:fixed;top:72px;left:0;right:0;z-index:19;background:var(--paper);border-bottom:1px solid var(--line);padding:16px 24px}.mobile-nav:not([hidden]){display:grid;grid-template-columns:1fr 1fr;gap:16px}.skip{position:fixed;top:10px;left:10px;z-index:100;background:var(--panel);padding:14px;transform:translateY(-160%)}.skip:focus{transform:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.button{display:inline-flex;align-items:center;justify-content:space-between;gap:35px;padding:14px 21px;font-size:14px;border:1px solid var(--line);transition:background .2s,color .2s;min-height:49px;line-height:1.3;border-radius:3px}.primary{background:var(--green);border-color:var(--green);color:#f8f9f7}.primary:hover{background:#365e50}.secondary{background:transparent;color:var(--green);border-color:#bdcabe}.secondary:hover{background:#e9efe5}.light{background:var(--panel);color:var(--green);border-color:var(--panel)}.button span{font-size:19px}.text-button,.text-link{font-size:14px;display:inline-flex;align-items:center;gap:18px}.text-button{padding:11px 0}.text-link{border-bottom:1px solid #bdcabe;padding-bottom:5px}
 
-:root{
-  --ink:#10131a; --paper:#f1f4f3; --tod:#f2f5f4;
-  --green:#30be86; --green-hover:#3ed699; --green-dark:#167a55;
-  --card:#ffffff; --tint-dark:#13211d;
-  --line-dark:rgba(242,245,244,.11); --line-light:rgba(16,19,26,.1);
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:Onest,system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
-a{color:inherit}
-img{max-width:100%;display:block}
+/* Одна компактная шапка для всех страниц макета. */
+:root{--site-header-height:64px}html,html:has(.niche-page){scroll-padding-top:calc(var(--site-header-height) + 12px)}
+.header{height:var(--site-header-height);gap:24px}.header .brand img{width:132px}.header nav{gap:25px}.header nav a{position:relative;padding-block:20px}.header nav a[aria-current="page"]{color:var(--green)}.header nav a[aria-current="page"]:after{content:"";height:2px;position:absolute;bottom:12px;left:0;right:0;background:var(--brand)}.mobile-nav{top:var(--site-header-height)}.mobile-nav a[aria-current="page"]{color:#17875c;font-weight:600}.niche-page{--header-height:var(--site-header-height)}
+@media(max-width:900px){.header nav{display:none}.header-login{margin-left:auto;padding-left:0;border:0}.menu-button{display:flex;align-items:center;gap:10px;padding:8px 0 8px 16px;border-left:1px solid var(--line)}}
+@media(max-width:560px){:root{--site-header-height:56px}.header{height:var(--site-header-height);gap:15px}.header .brand img{width:112px}.mobile-nav{top:var(--site-header-height)}}
 
-.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+/* SEO typography uses the published Manrope/Golos palette and shared navigation. */
+.wrap{width:min(900px,calc(100% - 104px));margin-inline:auto}main.wrap{padding-block:54px 72px;min-height:65vh}article{min-width:0}h1{font-size:clamp(32px,4vw,56px);line-height:1.12;letter-spacing:-.045em;margin:20px 0 25px;overflow-wrap:anywhere}h2{font-size:clamp(25px,2.6vw,35px);line-height:1.25;margin:42px 0 20px}h3{margin:28px 0 15px}.lede{font-size:20px;line-height:1.65;color:var(--muted);margin:0 0 28px}article p{margin:18px 0;line-height:1.85}article ul,article ol{padding-left:24px}article li{margin-block:10px}article a{color:var(--green);text-decoration:underline;text-underline-offset:4px}article img{height:auto}.crumbs{font-size:12px;color:var(--muted);margin-bottom:24px}.cta{margin-top:48px;padding:28px;background:var(--soft);border:1px solid var(--line)}.cta h2{margin-top:0}.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 20px;margin:8px 8px 0 0;background:var(--green);color:white;text-decoration:none;border:1px solid var(--green);border-radius:3px;max-width:100%}.btn-line{background:transparent;color:var(--green)}.faq details{border-bottom:1px solid var(--line);padding:18px 0}.faq summary{cursor:pointer;font-weight:500;color:var(--ink);min-height:32px}.faq-a{font-size:16px}main.wrap table{display:block;overflow:auto;max-width:100%;border-collapse:collapse;font-size:15px}main.wrap th,main.wrap td{padding:14px;border:1px solid var(--line);min-width:125px;text-align:left}main.wrap th{background:var(--soft)}article blockquote{margin:28px 0;padding:20px 25px;border-left:3px solid var(--brand);background:var(--soft)}article pre{overflow:auto}article code{overflow-wrap:anywhere}.list{display:grid;gap:16px;list-style:none;padding:0;margin:35px 0}.list a{display:block;border:1px solid var(--line);background:var(--panel);padding:26px;transition:background .2s}.list a:hover{background:var(--soft)}.list h2{font-size:25px;margin:12px 0}.list p{font-size:16px;line-height:1.7}.list .d{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}.seo-footer{background:var(--dark);color:#e6eee7;padding:36px 52px;display:flex;align-items:center;gap:30px;font-size:12px}.seo-footer img{display:block;filter:brightness(0) invert(1)}.seo-footer nav{display:flex;flex-wrap:wrap;gap:18px}.seo-footer>span{margin-left:auto;white-space:nowrap}@media(max-width:900px){.header{padding-inline:24px}}@media(max-width:560px){.wrap{width:calc(100% - 36px)}main.wrap{padding-block:28px 45px}.header{padding-inline:18px}h1{font-size:33px}.lede{font-size:18px}.list a{padding:21px}.list h2{font-size:23px}.cta{padding:22px}.seo-footer{padding:28px 18px;flex-wrap:wrap;gap:22px}.seo-footer nav{width:100%;gap:18px}.seo-footer>span{margin-left:0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-header{position:sticky;top:0;z-index:50;background:rgba(16,15,13,.82);color:var(--tod);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(242,245,244,.09)}
-.bar{display:flex;align-items:center;gap:16px 28px;min-height:64px;
-  max-width:1200px;margin:0 auto;padding:12px 24px}
-.brand{display:flex;align-items:center;gap:10px;flex:none;text-decoration:none}
-.dot{width:9px;height:9px;border-radius:50%;background:var(--green);flex:none}
-.logo{display:block;height:20px;color:var(--tod)}
-.logo svg{height:100%;width:auto;display:block}
-.bar nav{margin-left:auto;display:flex;gap:20px;font-size:14.5px;color:rgba(242,245,244,.62)}
-.bar nav a{text-decoration:none}
-.bar nav a:hover{color:var(--green)}
-.hdr-cta{background:var(--green);color:var(--ink);font-weight:600;text-decoration:none;
-  padding:10px 18px;border-radius:999px;font-size:14.5px;white-space:nowrap}
-.hdr-cta:hover{background:var(--green-hover)}
-
-.crumbs{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(16,19,26,.45);margin:40px 0 20px}
-.crumbs a{text-decoration:none;color:inherit}
-.crumbs a:hover{color:var(--green-dark)}
-
-h1{font-size:clamp(30px,4.6vw,44px);line-height:1.08;letter-spacing:-.03em;font-weight:500;
-  margin:0 0 18px;text-wrap:balance}
-.lede{font-size:18.5px;line-height:1.6;color:rgba(16,19,26,.62);margin:0 0 40px;text-wrap:pretty}
-h2{font-size:clamp(23px,3vw,29px);line-height:1.15;letter-spacing:-.02em;font-weight:500;
-  margin:52px 0 16px;text-wrap:balance}
-h3{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:28px 0 10px}
-p{margin:0 0 16px}
-article a{color:var(--green-dark);text-decoration-color:rgba(22,122,85,.4)}
-article a:hover{text-decoration-color:var(--green-dark)}
-ul{margin:0 0 16px;padding-left:22px}
-li{margin-bottom:8px}
-li::marker{color:var(--green-dark)}
-
-.scroll{overflow-x:auto;margin:28px 0}
-table{border-collapse:collapse;width:100%;min-width:560px;background:var(--card);
-  border:1px solid var(--line-light);border-radius:12px;overflow:hidden;font-size:15px}
-th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-  text-align:left;padding:14px 18px;color:rgba(16,19,26,.5);border-bottom:1px solid var(--line-light)}
-td{padding:14px 18px;border-bottom:1px solid rgba(16,19,26,.06);vertical-align:top;line-height:1.45}
-tr:last-child td{border-bottom:none}
-tr.hl td{background:#e5efe9}
-.mute{color:rgba(16,19,26,.6)}
-
-.signal{background:var(--card);border:1px solid var(--line-light);border-radius:12px;
-  padding:22px 24px;margin:0 0 14px}
-.signal .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--green-dark);margin-bottom:10px}
-.signal p{margin:0;color:rgba(16,19,26,.72)}
-.signal p b{color:var(--ink)}
-
-.faq{margin:8px 0 0}
-.faq details{border-top:1px solid rgba(16,19,26,.12)}
-.faq details:last-child{border-bottom:1px solid rgba(16,19,26,.12)}
-.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;
-  align-items:baseline;gap:24px;padding:20px 0;font-size:18px;font-weight:600;letter-spacing:-.01em}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--green-dark);flex:none}
-.faq details[open] summary::after{content:"–"}
-.faq .faq-a{padding:0 0 24px;color:rgba(16,19,26,.62);max-width:640px;text-wrap:pretty}
-
-.cta{background:var(--ink);color:var(--tod);border-radius:16px;padding:36px;margin:56px 0}
-.cta h2{margin:0 0 12px}
-.cta p{color:rgba(242,245,244,.62);max-width:520px}
-.btn{display:inline-flex;align-items:center;font:inherit;font-size:16px;font-weight:600;
-  padding:15px 26px;border-radius:999px;text-decoration:none;margin-top:8px;
-  background:var(--green);color:var(--ink)}
-.btn:hover{background:var(--green-hover)}
-.btn-line{background:none;border:1px solid rgba(242,245,244,.22);color:var(--tod);
-  font-weight:400;margin-left:10px}
-.btn-line:hover{border-color:var(--green);color:var(--green);background:none}
-
-footer{background:var(--ink);color:rgba(242,245,244,.5);margin-top:72px}
-.foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;font-size:14.5px;
-  max-width:1200px;margin:0 auto;padding:32px 24px}
-.foot .logo{height:15px;opacity:.6}
-.foot a{text-decoration:none}
-.foot a:hover{color:var(--green)}
-.foot .sp{margin-left:auto}
-
-@media (max-width:640px){
-  .bar nav{display:none}
-  .cta{padding:26px 22px}
-  .btn-line{margin-left:0;margin-top:12px}
-  .faq summary{font-size:16.5px;padding:17px 0;gap:16px}
-}
 </style>
-
+<meta name="beneuro-design" content="2026-10-21"><link rel="stylesheet" href="mobile-layout.css"><script src="article-page.js" defer></script><script src="mobile-layout.js" defer></script>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -204,20 +99,8 @@ footer{background:var(--ink);color:rgba(242,245,244,.5);margin-top:72px}
 </head>
 <body>
 
-<header>
-  <div class="bar">
-    <a class="brand" href="/" aria-label="Beneuro">
-      <span class="dot" aria-hidden="true"></span>
-      <span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.9 73.6" role="img" aria-label="Beneuro"> <g transform="translate(-6.900 72.000) scale(0.05 -0.05)"><path fill="currentColor" d="M670 -30Q509 -30 401 45Q293 120 238.5 249Q184 378 184 540Q184 702 238 831Q292 960 397 1035Q502 1110 656 1110Q811 1110 926 1036Q1041 962 1104.5 833.5Q1168 705 1168 540Q1168 378 1105.5 249Q1043 120 931 45Q819 -30 670 -30ZM138 0L138 1440L412 1440L412 740L378 740L378 0ZM626 212Q714 212 770 256Q826 300 853 374.5Q880 449 880 540Q880 630 852 704.5Q824 779 765.5 823.5Q707 868 616 868Q531 868 478.5 827Q426 786 402 712Q378 638 378 540Q378 442 402 368Q426 294 480.5 253Q535 212 626 212Z M1834 -30Q1668 -30 1541.5 41.5Q1415 113 1343.5 238.5Q1272 364 1272 526Q1272 703 1342 834Q1412 965 1535 1037.5Q1658 1110 1818 1110Q1988 1110 2107 1030Q2226 950 2283 805Q2340 660 2323 464L2054 464L2054 564Q2054 729 2001.5 801.5Q1949 874 1830 874Q1691 874 1625.5 789.5Q1560 705 1560 540Q1560 389 1625.5 306.5Q1691 224 1818 224Q1898 224 1955 259Q2012 294 2042 360L2314 282Q2253 134 2121.5 52Q1990 -30 1834 -30ZM1476 464L1476 666L2192 666L2192 464Z M3198 0L3198 510Q3198 547 3194 604.5Q3190 662 3169 720Q3148 778 3100.5 817Q3053 856 2966 856Q2931 856 2891 845Q2851 834 2816 802.5Q2781 771 2758.5 710Q2736 649 2736 548L2580 622Q2580 750 2632 862Q2684 974 2788.5 1043Q2893 1112 3052 1112Q3179 1112 3259 1069Q3339 1026 3383.5 960Q3428 894 3447 822.5Q3466 751 3470 692Q3474 633 3474 606L3474 0ZM2460 0L2460 1080L2702 1080L2702 722L2736 722L2736 0Z M4160 -30Q3994 -30 3867.5 41.5Q3741 113 3669.5 238.5Q3598 364 3598 526Q3598 703 3668 834Q3738 965 3861 1037.5Q3984 1110 4144 1110Q4314 1110 4433 1030Q4552 950 4609 805Q4666 660 4649 464L4380 464L4380 564Q4380 729 4327.5 801.5Q4275 874 4156 874Q4017 874 3951.5 789.5Q3886 705 3886 540Q3886 389 3951.5 306.5Q4017 224 4144 224Q4224 224 4281 259Q4338 294 4368 360L4640 282Q4579 134 4447.5 52Q4316 -30 4160 -30ZM3802 464L3802 666L4518 666L4518 464Z M5220 -32Q5093 -32 5013 11Q4933 54 4888.5 120Q4844 186 4825 257.5Q4806 329 4802 388Q4798 447 4798 474L4798 1080L5074 1080L5074 570Q5074 533 5078 475.5Q5082 418 5103 360Q5124 302 5171.5 263Q5219 224 5306 224Q5341 224 5381 235Q5421 246 5456 277.5Q5491 309 5513.5 370.5Q5536 432 5536 532L5692 458Q5692 330 5640 218Q5588 106 5483.5 37Q5379 -32 5220 -32ZM5570 0L5570 358L5536 358L5536 1080L5810 1080L5810 0Z M6034 0L6034 1080L6274 1080L6274 816L6248 850Q6269 906 6304 952Q6339 998 6390 1028Q6429 1052 6475 1065.5Q6521 1079 6570 1082.5Q6619 1086 6668 1080L6668 826Q6623 840 6563.5 835.5Q6504 831 6456 808Q6408 786 6375 749.5Q6342 713 6325 663.5Q6308 614 6308 552L6308 0Z M7268 -30Q7105 -30 6982 43Q6859 116 6790.5 244.5Q6722 373 6722 540Q6722 709 6792 837.5Q6862 966 6985 1038Q7108 1110 7268 1110Q7431 1110 7554.5 1037Q7678 964 7747 835.5Q7816 707 7816 540Q7816 372 7746.5 243.5Q7677 115 7553.5 42.5Q7430 -30 7268 -30ZM7268 224Q7399 224 7463.5 312.5Q7528 401 7528 540Q7528 684 7462.5 770Q7397 856 7268 856Q7179 856 7122 816Q7065 776 7037.5 705Q7010 634 7010 540Q7010 395 7075.5 309.5Q7141 224 7268 224Z"/></g> </svg></span>
-    </a>
-    <nav>
-      <a href="/#how">Как работает</a>
-      <a href="/#numbers">Цифры</a>
-      <a href="/#price">Цены</a>
-    </nav>
-    <a class="hdr-cta" href="https://t.me/beneuro_bot">Начать в Telegram →</a>
-  </div>
-</header>
+<header class="header"><a class="brand" href="index.html" aria-label="Beneuro — на главную"><img src="assets/customer-articles/beneuro-wordmark.svg" width="146" height="28" alt="beneuro"></a><nav aria-label="Разделы сайта"><a data-page="home" href="index.html">Главная</a><a data-page="catalog" href="choose-niche.html">Выбрать нишу</a><a data-page="crm" href="crm.html">Наша CRM</a><a data-page="pricing" href="pricing.html">Тарифы</a><a data-page="connect" href="index.html#connect">Подключить</a></nav><a class="header-login" href="https://panel.beneuro.ai/">Войти <span aria-hidden="true">↗</span></a><button class="menu-button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-nav">Меню <span>☰</span></button></header>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Мобильное меню" hidden><a data-page="home" href="index.html">Главная</a><a data-page="catalog" href="choose-niche.html">Выбрать нишу</a><a data-page="crm" href="crm.html">Наша CRM</a><a data-page="pricing" href="pricing.html">Тарифы</a><a data-page="connect" href="index.html#connect">Подключить</a></nav>
 
 <main class="wrap">
 <article>
@@ -380,16 +263,7 @@ footer{background:var(--ink);color:rgba(242,245,244,.5);margin-top:72px}
 </article>
 </main>
 
-<footer>
-  <div class="foot">
-    <a class="brand" href="/" aria-label="Beneuro"><span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.9 73.6" role="img" aria-label="Beneuro"> <g transform="translate(-6.900 72.000) scale(0.05 -0.05)"><path fill="currentColor" d="M670 -30Q509 -30 401 45Q293 120 238.5 249Q184 378 184 540Q184 702 238 831Q292 960 397 1035Q502 1110 656 1110Q811 1110 926 1036Q1041 962 1104.5 833.5Q1168 705 1168 540Q1168 378 1105.5 249Q1043 120 931 45Q819 -30 670 -30ZM138 0L138 1440L412 1440L412 740L378 740L378 0ZM626 212Q714 212 770 256Q826 300 853 374.5Q880 449 880 540Q880 630 852 704.5Q824 779 765.5 823.5Q707 868 616 868Q531 868 478.5 827Q426 786 402 712Q378 638 378 540Q378 442 402 368Q426 294 480.5 253Q535 212 626 212Z M1834 -30Q1668 -30 1541.5 41.5Q1415 113 1343.5 238.5Q1272 364 1272 526Q1272 703 1342 834Q1412 965 1535 1037.5Q1658 1110 1818 1110Q1988 1110 2107 1030Q2226 950 2283 805Q2340 660 2323 464L2054 464L2054 564Q2054 729 2001.5 801.5Q1949 874 1830 874Q1691 874 1625.5 789.5Q1560 705 1560 540Q1560 389 1625.5 306.5Q1691 224 1818 224Q1898 224 1955 259Q2012 294 2042 360L2314 282Q2253 134 2121.5 52Q1990 -30 1834 -30ZM1476 464L1476 666L2192 666L2192 464Z M3198 0L3198 510Q3198 547 3194 604.5Q3190 662 3169 720Q3148 778 3100.5 817Q3053 856 2966 856Q2931 856 2891 845Q2851 834 2816 802.5Q2781 771 2758.5 710Q2736 649 2736 548L2580 622Q2580 750 2632 862Q2684 974 2788.5 1043Q2893 1112 3052 1112Q3179 1112 3259 1069Q3339 1026 3383.5 960Q3428 894 3447 822.5Q3466 751 3470 692Q3474 633 3474 606L3474 0ZM2460 0L2460 1080L2702 1080L2702 722L2736 722L2736 0Z M4160 -30Q3994 -30 3867.5 41.5Q3741 113 3669.5 238.5Q3598 364 3598 526Q3598 703 3668 834Q3738 965 3861 1037.5Q3984 1110 4144 1110Q4314 1110 4433 1030Q4552 950 4609 805Q4666 660 4649 464L4380 464L4380 564Q4380 729 4327.5 801.5Q4275 874 4156 874Q4017 874 3951.5 789.5Q3886 705 3886 540Q3886 389 3951.5 306.5Q4017 224 4144 224Q4224 224 4281 259Q4338 294 4368 360L4640 282Q4579 134 4447.5 52Q4316 -30 4160 -30ZM3802 464L3802 666L4518 666L4518 464Z M5220 -32Q5093 -32 5013 11Q4933 54 4888.5 120Q4844 186 4825 257.5Q4806 329 4802 388Q4798 447 4798 474L4798 1080L5074 1080L5074 570Q5074 533 5078 475.5Q5082 418 5103 360Q5124 302 5171.5 263Q5219 224 5306 224Q5341 224 5381 235Q5421 246 5456 277.5Q5491 309 5513.5 370.5Q5536 432 5536 532L5692 458Q5692 330 5640 218Q5588 106 5483.5 37Q5379 -32 5220 -32ZM5570 0L5570 358L5536 358L5536 1080L5810 1080L5810 0Z M6034 0L6034 1080L6274 1080L6274 816L6248 850Q6269 906 6304 952Q6339 998 6390 1028Q6429 1052 6475 1065.5Q6521 1079 6570 1082.5Q6619 1086 6668 1080L6668 826Q6623 840 6563.5 835.5Q6504 831 6456 808Q6408 786 6375 749.5Q6342 713 6325 663.5Q6308 614 6308 552L6308 0Z M7268 -30Q7105 -30 6982 43Q6859 116 6790.5 244.5Q6722 373 6722 540Q6722 709 6792 837.5Q6862 966 6985 1038Q7108 1110 7268 1110Q7431 1110 7554.5 1037Q7678 964 7747 835.5Q7816 707 7816 540Q7816 372 7746.5 243.5Q7677 115 7553.5 42.5Q7430 -30 7268 -30ZM7268 224Q7399 224 7463.5 312.5Q7528 401 7528 540Q7528 684 7462.5 770Q7397 856 7268 856Q7179 856 7122 816Q7065 776 7037.5 705Q7010 634 7010 540Q7010 395 7075.5 309.5Q7141 224 7268 224Z"/></g> </svg></span></a>
-    <span>© 2026</span>
-    <span><a href="/stati">Статьи</a></span>
-    <span class="sp"><a href="https://t.me/beneuro_bot">Telegram-бот</a></span>
-    <span><a href="/requisites">Реквизиты и оферта</a></span>
-    <span><a href="https://t.me/keshapa">Связаться</a></span>
-  </div>
-</footer>
+<footer class="seo-footer"><a href="/" aria-label="Beneuro — на главную"><img src="assets/customer-articles/beneuro-wordmark.svg" width="116" height="23" alt="beneuro"></a><nav aria-label="Ссылки в подвале"><a href="/stati">Статьи</a><a href="https://panel.beneuro.ai/signup">Регистрация</a><a href="/requisites">Реквизиты и оферта</a><a href="https://t.me/keshapa">Связаться</a></nav><span>© 2026 Beneuro</span></footer>
 
 </body>
 </html>
