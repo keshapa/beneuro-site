@@ -1,3 +1,44 @@
+// Символьные стрелки и play iOS может рисовать как эмодзи. В управлении используем SVG.
+/* BENEURO-VECTOR-ICONS */
+(() => {
+  'use strict';
+  const shapes = {
+    '↗':'M5 19 19 5M5 5h14v14', '↘':'M5 5 19 19M5 19h14V5',
+    '↖':'M19 19 5 5M5 19V5h14', '↙':'M19 5 5 19M5 5v14h14',
+    '→':'M4 12h16M13 5l7 7-7 7', '←':'M20 12H4M11 5l-7 7 7 7',
+    '↑':'M12 20V4M5 11l7-7 7 7', '↓':'M12 4v16M5 13l7 7 7-7',
+    '▶':'M8 5l11 7-11 7Z', '►':'M8 5l11 7-11 7Z', '◀':'M16 5 5 12l11 7Z',
+    'Ⅱ':'M8 5v14M16 5v14', '⏸':'M8 5v14M16 5v14',
+    '⤢':'M4 9V4h5M4 4l6 6M15 4h5v5M20 4l-6 6M20 15v5h-5M20 20l-6-6M9 20H4v-5M4 20l6-6'
+  };
+  const glyphs=/[↗↘↖↙→←↑↓▶►◀Ⅱ⏸⤢]\uFE0F?/gu, ns='http://www.w3.org/2000/svg';
+  const controls='a,button,summary,[role="button"]', excluded='svg,script,style,textarea,pre,code,[contenteditable="true"],#beneuro-text-editor';
+  function convert(text) {
+    const parent=text.parentElement;
+    if(!parent||parent.closest(excluded)||!parent.closest(controls))return;
+    glyphs.lastIndex=0;
+    const matches=[...text.data.matchAll(glyphs)];if(!matches.length)return;
+    const fragment=document.createDocumentFragment();let offset=0;
+    for(const match of matches){
+      fragment.append(text.data.slice(offset,match.index));
+      const svg=document.createElementNS(ns,'svg'),path=document.createElementNS(ns,'path'),description=document.createElementNS(ns,'desc');
+      svg.setAttribute('class','beneuro-icon');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
+      svg.style.cssText='display:inline-block;width:1em;height:1em;vertical-align:-.14em;flex-shrink:0;pointer-events:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round';
+      // Невидимое описание сохраняет textContent для редактора сайта и существующих кнопок.
+      description.textContent=match[0];path.setAttribute('d',shapes[match[0][0]]);svg.append(description,path);fragment.append(svg);offset=match.index+match[0].length;
+    }
+    fragment.append(text.data.slice(offset));text.replaceWith(fragment);
+  }
+  function scan(root){
+    if(root.nodeType===Node.TEXT_NODE){convert(root);return}
+    if(root.nodeType!==Node.ELEMENT_NODE||root.closest(excluded))return;
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),texts=[];while(walker.nextNode())texts.push(walker.currentNode);texts.forEach(convert);
+  }
+  scan(document.body);
+  new MutationObserver(records=>{for(const record of records){if(record.type==='characterData')convert(record.target);else record.addedNodes.forEach(scan)}}).observe(document.body,{childList:true,characterData:true,subtree:true});
+})();
+/* /BENEURO-VECTOR-ICONS */
+
 // Короткая мобильная подача; исходные тексты и настольная панель сохраняются.
 (() => {
   'use strict';
